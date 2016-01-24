@@ -27,11 +27,15 @@ if (!should('serve')) {
   return
 }
 
-function abort (response, msg, code) {
-  response.writeHead(code || 404, {'Content-Type': 'text/plain'})
-  response.write(msg || 'Not Found')
-  response.end()
+function respond(status, message, type, encoding) {
+  var request = this
+
+  request.writeHead(status, {'Content-Type': type || 'text/plain'})
+  request.write(message || 'Not Found', encoding || 'utf8')
+  request.end()
 }
+
+http.ServerResponse.prototype.send = respond
 
 const server = http.createServer(function (request, response) {
 
@@ -41,7 +45,7 @@ const server = http.createServer(function (request, response) {
   try {
     const stats = fs.statSync(filename)
   } catch (err) {
-    return abort(response)
+    return response.send(404)
   }
 
   if (stats.isDirectory()) {
@@ -49,20 +53,18 @@ const server = http.createServer(function (request, response) {
   }
 
   if (!fs.statSync(filename).isFile()) {
-    return abort(response)
+    return response.send(404)
   }
 
   const type = mime.lookup(filename)
-  const encoding = type == 'text/html' ? 'utf8' : 'binary'
+  const encoding = type !== 'text/html' && 'binary'
 
-  fs.readFile(filename, encoding, function(err, file) {
+  fs.readFile(filename, 'binary', function(err, file) {
     if (err) {
-      return abort(response, err, 500)
+      return response.send(500, err)
     }
 
-    response.writeHead(200, {'Content-Type': type})
-    response.write(file, encoding)
-    response.end()
+    response.send(200, file, type, encoding)
   })
 
 })
