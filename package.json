@@ -1,0 +1,24 @@
+{
+  "name": "dago",
+  "version": "0.1.0",
+  "description": "Generate static sites easily",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leo/dago.git"
+  },
+  "keywords": [
+    "static",
+    "site",
+    "generator"
+  ],
+  "author": "Leonard Lamprecht <mindrun@icloud.com> (http://leo.im)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leo/dago/issues"
+  },
+  "homepage": "https://github.com/leo/dago#readme"
+}
