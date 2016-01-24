@@ -32,7 +32,7 @@ function abort (response, msg, code) {
   response.end()
 }
 
-http.createServer(function (request, response) {
+const server = http.createServer(function (request, response) {
 
   const uri = url.parse(request.url).pathname
   const filename = path.join(process.cwd() + '/dist', uri)
@@ -59,4 +59,11 @@ http.createServer(function (request, response) {
     response.end()
   })
 
-}).listen(config.port)
+})
+
+server.listen(config.port, function () {
+  const port = this.address().port
+  const url = 'http://localhost:' + port
+
+  console.log('Your site is running at ' + url)
+})
