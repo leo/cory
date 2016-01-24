@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
-const app = require('koa')()
-const serve = require('koa-static')
+const http = require('http')
+const url = require('url')
+const path = require('path')
+const fs = require('fs')
 const open = require('open')
 
 const params = process.argv.slice(2)
@@ -24,12 +26,37 @@ if (!should('serve')) {
   return
 }
 
-app.use(serve(workingDir + '/dist'))
+function abort (response, msg, code) {
+  response.writeHead(code || 404, {'Content-Type': 'text/plain'})
+  response.write(msg || 'Not Found')
+  response.end()
+}
 
-app.listen(config.port, function () {
-  const port = this.address().port
-  const url = 'http://localhost:' + port
+http.createServer(function (request, response) {
 
-  console.log('Your site is running at ' + url)
-  open(url)
-})
+  const uri = url.parse(request.url).pathname
+  const filename = path.join(process.cwd() + '/dist', uri)
+
+  try {
+    const stats = fs.statSync(filename)
+  } catch (err) {
+    return abort(response)
+  }
+
+  if (!stats.isFile()) {
+    return abort(response)
+  }
+
+  if (fs.statSync(filename).isDirectory()) filename += '/index.html';
+
+  fs.readFile(filename, 'binary', function(err, file) {
+    if (err) {
+      return abort(response, err, 500)
+    }
+
+    response.writeHead(200)
+    response.write(file, 'binary')
+    response.end()
+  })
+
+}).listen(config.port)
