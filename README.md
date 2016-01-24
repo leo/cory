@@ -1,0 +1,2 @@
+# dago
+Static site generator
