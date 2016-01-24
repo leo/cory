@@ -23,5 +23,10 @@
   "bugs": {
     "url": "https://github.com/leo/dago/issues"
   },
-  "homepage": "https://github.com/leo/dago#readme"
+  "homepage": "https://github.com/leo/dago#readme",
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "koa": "^1.1.2",
+    "koa-static": "^2.0.0"
+  }
 }
