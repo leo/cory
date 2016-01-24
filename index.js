@@ -35,7 +35,7 @@ function abort (response, msg, code) {
 const server = http.createServer(function (request, response) {
 
   const uri = url.parse(request.url).pathname
-  const filename = path.join(process.cwd() + '/dist', uri)
+  var filename = path.join(process.cwd() + '/dist', uri)
 
   try {
     const stats = fs.statSync(filename)
@@ -43,11 +43,13 @@ const server = http.createServer(function (request, response) {
     return abort(response)
   }
 
-  if (!stats.isFile()) {
-    return abort(response)
+  if (stats.isDirectory()) {
+    filename += 'index.html'
   }
 
-  if (fs.statSync(filename).isDirectory()) filename += '/index.html';
+  if (!fs.statSync(filename).isFile()) {
+    return abort(response)
+  }
 
   fs.readFile(filename, 'binary', function(err, file) {
     if (err) {
