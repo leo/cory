@@ -5,6 +5,7 @@ const url = require('url')
 const path = require('path')
 const fs = require('fs')
 const open = require('open')
+const mime = require('mime')
 
 const params = process.argv.slice(2)
 const workingDir = process.cwd()
@@ -51,13 +52,16 @@ const server = http.createServer(function (request, response) {
     return abort(response)
   }
 
-  fs.readFile(filename, 'binary', function(err, file) {
+  const type = mime.lookup(filename)
+  const encoding = type == 'text/html' ? 'utf8' : 'binary'
+
+  fs.readFile(filename, encoding, function(err, file) {
     if (err) {
       return abort(response, err, 500)
     }
 
-    response.writeHead(200)
-    response.write(file, 'binary')
+    response.writeHead(200, {'Content-Type': type})
+    response.write(file, encoding)
     response.end()
   })
 
