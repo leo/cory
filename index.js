@@ -66,4 +66,5 @@ server.listen(config.port, function () {
   const url = 'http://localhost:' + port
 
   console.log('Your site is running at ' + url)
+  open(url)
 })
