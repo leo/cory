@@ -2,6 +2,7 @@
 
 const app = require('koa')()
 const serve = require('koa-static')
+const open = require('open')
 
 const params = process.argv.slice(2)
 const workingDir = process.cwd()
@@ -21,4 +22,5 @@ app.listen(4000, function () {
   const url = 'http://localhost:' + port
 
   console.log('Your site is running at ' + url)
+  open(url)
 })
