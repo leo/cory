@@ -18,13 +18,15 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "dago": "index.js"
+    "dago": "index.js",
+    "dago-serve": "bin/serve.js"
   },
   "bugs": {
     "url": "https://github.com/leo/dago/issues"
   },
   "homepage": "https://github.com/leo/dago#readme",
   "dependencies": {
+    "commander": "^2.9.0",
     "handlebars": "^4.0.5",
     "mime": "^1.3.4",
     "open": "0.0.5"
