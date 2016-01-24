@@ -6,6 +6,15 @@ const open = require('open')
 
 const params = process.argv.slice(2)
 const workingDir = process.cwd()
+const options = require(workingDir + '/config.json')
+
+const config = {
+  port: 4000
+}
+
+if (options) {
+  Object.assign(config, options)
+}
 
 function should (param) {
   return params.indexOf(param) > -1
@@ -17,7 +26,7 @@ if (!should('serve')) {
 
 app.use(serve(workingDir + '/dist'))
 
-app.listen(4000, function () {
+app.listen(config.port, function () {
   const port = this.address().port
   const url = 'http://localhost:' + port
 
