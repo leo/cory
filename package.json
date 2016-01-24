@@ -21,6 +21,9 @@
     "dago": "index.js",
     "dago-serve": "bin/serve.js"
   },
+  "greenkeeper": {
+    "emails": false
+  },
   "bugs": {
     "url": "https://github.com/leo/dago/issues"
   },
