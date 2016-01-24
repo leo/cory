@@ -17,6 +17,7 @@
   ],
   "author": "Leonard Lamprecht <mindrun@icloud.com> (http://leo.im)",
   "license": "MIT",
+  "preferGlobal": true,
   "bugs": {
     "url": "https://github.com/leo/dago/issues"
   },
