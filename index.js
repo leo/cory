@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const runner = require('commander')
+const app = require('commander')
 
-runner
+app
   .version(require(__dirname + '/package.json').version)
   .command('serve', 'Serve your site locally')
   .parse(process.argv)
