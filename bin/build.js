@@ -2,10 +2,11 @@
 
 const fs = require('fs')
 const path = require('path')
-
 const handlebars = require('handlebars')
+
 const workingDir = process.cwd()
 const output = workingDir + '/dist'
+const exists = require('../lib/etc').dirExists
 
 const tags = {
   greeting: 'Hello!'
@@ -16,6 +17,10 @@ try {
   const files = fs.readdirSync(workingDir + '/pages')
 } catch (err) {
   throw err
+}
+
+if (!exists(output)) {
+  fs.mkdirSync(output)
 }
 
 function compileFile (resolve) {
@@ -40,7 +45,7 @@ function compileFile (resolve) {
 }
 
 const pages = files.reduce((promiseChain, file) => {
-  return promiseChain.then(new Promise((resolve) => compileFile.apply(file)))
+  return promiseChain.then(new Promise(compileFile.bind(file)))
 }, Promise.resolve())
 
 pages.then(function () {

@@ -3,26 +3,20 @@
 const path = require('path')
 const fs = require('fs')
 const walk = require('walk')
+
 const template = __dirname + '/../template'
+const exists = require('../lib/etc').dirExists
 
 const walker = walk.walk(template, {
   filters: ['dist']
 })
-
-function dirExists (folder) {
-  try {
-    return fs.statSync(folder).isDirectory()
-  } catch (err) {
-    return false
-  }
-}
 
 walker.on('file', function (root, fileStats, next) {
   const way = root + '/' + fileStats.name
   const subPath = root.replace(template, '')
   const folder = process.cwd() + subPath
 
-  if (!dirExists(folder)) {
+  if (!exists(folder)) {
     fs.mkdirSync(folder)
   }
 
