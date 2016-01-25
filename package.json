@@ -19,7 +19,8 @@
   "preferGlobal": true,
   "bin": {
     "dago": "index.js",
-    "dago-serve": "bin/serve.js"
+    "dago-serve": "bin/serve.js",
+    "dago-build": "bin/build.js"
   },
   "greenkeeper": {
     "emails": false
