@@ -31,13 +31,12 @@ function compileFile (resolve) {
   var template = handlebars.compile(content)
   var outputPath = output + '/' + meta.name + '.html'
 
-  try {
-    fs.writeFileSync(outputPath, template(tags))
-  } catch(err) {
-    reject(err)
-  }
-
-  resolve()
+  fs.writeFile(outputPath, template(tags), function (err) {
+    if (err) {
+      throw err
+    }
+    resolve()
+  })
 }
 
 const pages = files.reduce((promiseChain, file) => {
