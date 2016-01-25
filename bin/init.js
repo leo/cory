@@ -3,9 +3,11 @@
 const path = require('path')
 const fs = require('fs')
 const walk = require('walk')
-
 const template = __dirname + '/../template'
-const walker = walk.walk(template)
+
+const walker = walk.walk(template, {
+  filters: ['dist']
+})
 
 function dirExists (folder) {
   try {
