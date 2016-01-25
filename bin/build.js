@@ -12,6 +12,7 @@ const tags = {
 }
 
 try {
+  console.time('Finished building')
   const files = fs.readdirSync(workingDir + '/pages')
 } catch (err) {
   throw err
@@ -41,10 +42,10 @@ function compileFile (resolve) {
 
 const pages = files.reduce((promiseChain, file) => {
   return promiseChain.then(new Promise((resolve) => compileFile.apply(file)))
-}, Promise.resolve('Built!'))
+}, Promise.resolve())
 
-pages.then(function (info) {
-  console.log(info)
+pages.then(function () {
+  console.timeEnd('Finished building')
 }, function (reason) {
   throw reason
 })
