@@ -17,22 +17,34 @@ try {
   throw err
 }
 
-files.forEach(function (file) {
-  var meta = path.parse(workingDir + '/pages/' + file)
+function compileFile (resolve) {
+  var meta = path.parse(workingDir + '/pages/' + this)
   var fullPath = meta.dir + '/' + meta.base
 
-  fs.readFile(fullPath, 'utf8', function (err, content) {
-    if (err) {
-      throw err
-    }
+  try {
+    var content = fs.readFileSync(fullPath, 'utf8')
+  } catch (err) {
+    reject(err)
+  }
 
-    var template = handlebars.compile(content)
-    var outputPath = output + '/' + meta.name + '.html'
+  var template = handlebars.compile(content)
+  var outputPath = output + '/' + meta.name + '.html'
 
-    try {
-      fs.writeFileSync(outputPath, template(tags))
-    } catch(err) {
-      throw err
-    }
-  })
+  try {
+    fs.writeFileSync(outputPath, template(tags))
+  } catch(err) {
+    reject(err)
+  }
+
+  resolve()
+}
+
+const pages = files.reduce((promiseChain, file) => {
+  return promiseChain.then(new Promise((resolve) => compileFile.apply(file)))
+}, Promise.resolve('Built!'))
+
+pages.then(function (info) {
+  console.log(info)
+}, function (reason) {
+  throw reason
 })
