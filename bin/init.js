@@ -3,6 +3,7 @@
 const path = require('path')
 const fs = require('fs')
 const walk = require('walk')
+const colors = require('colors')
 
 const template = __dirname + '/../template'
 const exists = require('../lib/etc').exists
@@ -25,4 +26,8 @@ walker.on('file', function (root, fileStats, next) {
 
   fs.createReadStream(way).pipe(target)
   next()
+})
+
+walker.on('end', function() {
+  console.log('Generated new dago site in ' + process.cwd().gray)
 })

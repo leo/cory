@@ -20,7 +20,7 @@ if (!exists(process.cwd() + '/config.json')) {
 
 if (!exists(process.cwd() + '/dist')) {
   try {
-    exec('dago build', {stdio: [0,1]})
+    exec('dago build', {stdio: [0, 1]})
   } catch (err) {
     console.error(err)
     process.exit(1)
