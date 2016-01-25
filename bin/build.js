@@ -6,7 +6,7 @@ const handlebars = require('handlebars')
 
 const workingDir = process.cwd()
 const output = workingDir + '/dist'
-const exists = require('../lib/etc').dirExists
+const exists = require('../lib/etc').exists
 
 const tags = {
   greeting: 'Hello!'

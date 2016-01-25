@@ -5,7 +5,7 @@ const fs = require('fs')
 const walk = require('walk')
 
 const template = __dirname + '/../template'
-const exists = require('../lib/etc').dirExists
+const exists = require('../lib/etc').exists
 
 const walker = walk.walk(template, {
   filters: ['dist']
