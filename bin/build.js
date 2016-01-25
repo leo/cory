@@ -12,7 +12,7 @@ const tags = {
 }
 
 try {
-  console.time('Finished building')
+  const timerStart = new Date().getTime()
   const files = fs.readdirSync(workingDir + '/pages')
 } catch (err) {
   throw err
@@ -45,7 +45,8 @@ const pages = files.reduce((promiseChain, file) => {
 }, Promise.resolve())
 
 pages.then(function () {
-  console.timeEnd('Finished building')
+  const timerEnd = new Date().getTime()
+  console.log(`Built the site in ${timerEnd - timerStart}ms.`);
 }, function (reason) {
   throw reason
 })
