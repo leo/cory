@@ -4,11 +4,27 @@ const http = require('http')
 const url = require('url')
 const path = require('path')
 const fs = require('fs')
+const exec = require('child_process').execSync
 
 const open = require('open')
 const mime = require('mime')
 
 const config = require('../lib/config')
+const exists = require('../lib/etc').exists
+
+if (!exists(process.cwd() + '/config.json')) {
+  console.error('No dago site existend in here!')
+  process.exit(1)
+}
+
+if (!exists(process.cwd() + '/dist')) {
+  try {
+    exec('dago build', {stdio: [0,1]})
+  } catch (err) {
+    console.error(err)
+    process.exit(1)
+  }
+}
 
 function respond(status, message, type, encoding) {
   var request = this
