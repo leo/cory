@@ -20,7 +20,8 @@
   "bin": {
     "dago": "index.js",
     "dago-serve": "bin/serve.js",
-    "dago-build": "bin/build.js"
+    "dago-build": "bin/build.js",
+    "dago-init": "bin/init.js"
   },
   "greenkeeper": {
     "emails": false
@@ -33,6 +34,7 @@
     "commander": "^2.9.0",
     "handlebars": "^4.0.5",
     "mime": "^1.3.4",
-    "open": "0.0.5"
+    "open": "0.0.5",
+    "walk": "^2.3.9"
   }
 }

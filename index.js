@@ -12,4 +12,7 @@ app
 app
   .command('build', 'Buily your site')
 
+app
+  .command('init', 'Generate a new site in the current directory')
+
 app.parse(process.argv)
