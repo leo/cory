@@ -8,12 +8,13 @@ const exec = require('child_process').execSync
 
 const open = require('open')
 const mime = require('mime')
+const colors = require('colors')
 
 const config = require('../lib/config')
 const exists = require('../lib/etc').exists
 
 if (!exists(process.cwd() + '/config.json')) {
-  console.error('No dago site existend in here!')
+  console.error('No site in here!'.red)
   process.exit(1)
 }
 

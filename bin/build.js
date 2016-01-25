@@ -8,6 +8,8 @@ const workingDir = process.cwd()
 const output = workingDir + '/dist'
 const exists = require('../lib/etc').exists
 
+const colors = require('colors')
+
 const tags = {
   greeting: 'Hello!'
 }
@@ -50,7 +52,7 @@ const pages = files.reduce((promiseChain, file) => {
 
 pages.then(function () {
   const timerEnd = new Date().getTime()
-  console.log(`Built the site in ${timerEnd - timerStart}ms.`);
+  console.log(`Built the site in ${timerEnd - timerStart}ms.`.green);
 }, function (reason) {
   throw reason
 })
