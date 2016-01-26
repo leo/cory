@@ -5,7 +5,6 @@ const colors = require('colors')
 
 const etc = require('../lib/etc')
 const exists = etc.exists
-const deleteDir = etc.deleteDir
 const output = process.cwd() + '/dist'
 
 if (!exists(process.cwd() + '/config.json')) {
@@ -19,4 +18,6 @@ if (!exists(output)) {
   process.exit(1)
 }
 
-deleteDir(output)
+etc.deleteDir(output, function () {
+  console.log('Everything cleaned up!'.green)
+})
