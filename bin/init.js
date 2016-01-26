@@ -9,6 +9,12 @@ const template = __dirname + '/../template'
 const config = require('../lib/config')
 const exists = require('../lib/etc').exists
 
+if (path.basename(process.cwd()) == 'template') {
+  console.log('You shouldn\'t run ' + 'init'.gray + ' in here.')
+  console.log('Please run it somewhere outside of the project.')
+  process.exit(0)
+}
+
 const walker = walk.walk(template, {
   filters: [path.parse(config.outputDir).base]
 })
