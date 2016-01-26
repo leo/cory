@@ -18,7 +18,7 @@ if (!exists(process.cwd() + '/config.json')) {
   process.exit(1)
 }
 
-if (!exists(process.cwd() + '/dist')) {
+if (!exists(process.cwd() + config.outputDir)) {
   try {
     exec('dago build', {stdio: [0, 1]})
   } catch (err) {
@@ -40,7 +40,7 @@ http.ServerResponse.prototype.send = respond
 const server = http.createServer(function (request, response) {
 
   const uri = url.parse(request.url).pathname
-  var filename = path.join(process.cwd() + '/dist', uri)
+  var filename = path.join(process.cwd() + config.outputDir, uri)
 
   try {
     const stats = fs.statSync(filename)

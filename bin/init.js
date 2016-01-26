@@ -6,10 +6,11 @@ const walk = require('walk')
 const colors = require('colors')
 
 const template = __dirname + '/../template'
+const config = require('../lib/config')
 const exists = require('../lib/etc').exists
 
 const walker = walk.walk(template, {
-  filters: ['dist']
+  filters: [config.outputDir]
 })
 
 walker.on('file', function (root, fileStats, next) {

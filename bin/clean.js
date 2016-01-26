@@ -4,8 +4,9 @@ const fs = require('fs')
 const colors = require('colors')
 
 const etc = require('../lib/etc')
+const config = require('../lib/config')
 const exists = etc.exists
-const output = process.cwd() + '/dist'
+const output = process.cwd() + config.outputDir
 
 if (!exists(process.cwd() + '/config.json')) {
   console.error('No site in here!'.red)
