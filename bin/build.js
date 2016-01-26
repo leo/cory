@@ -15,6 +15,11 @@ const tags = {
   greeting: 'Hello!'
 }
 
+if (!exists(process.cwd() + '/config.json')) {
+  console.error('No site in here!'.red)
+  process.exit(1)
+}
+
 try {
   const timerStart = new Date().getTime()
   const files = fs.readdirSync(process.cwd() + '/pages')
@@ -52,7 +57,10 @@ const pages = files.reduce((promiseChain, file) => {
 }, Promise.resolve())
 
 rollup.rollup({
-  entry: process.cwd() + '/assets/scripts/main.js'
+  entry: process.cwd() + '/assets/scripts/main.js',
+  plugins: [
+    babel()
+  ]
 }).then(function (bundle) {
   pages.then(bundle.write({
     dest: config.outputDir + '/assets/app.js',
