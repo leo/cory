@@ -52,7 +52,7 @@ const pages = files.reduce((promiseChain, file) => {
 }, Promise.resolve())
 
 rollup.rollup({
-  entry: process.cwd() + '/assets/main.js'
+  entry: process.cwd() + '/assets/scripts/main.js'
 }).then(function (bundle) {
   pages.then(bundle.write({
     dest: config.outputDir + '/assets/app.js',
