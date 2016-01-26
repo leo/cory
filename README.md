@@ -24,7 +24,7 @@ npm link
 
 :dizzy: Yey! Now you're able to ues the `dago` command everywhere in your command line!
 
-## Options
+## Commands
 
 <table>
   <thead>
