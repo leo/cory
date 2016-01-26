@@ -7,6 +7,8 @@ Static site generator
 dago [options] [command]
 ```
 
+Theres a list of all options and commands [below](#commands).
+
 ## Contribute
 
 Uninstall dago if it's already installed
@@ -29,8 +31,6 @@ npm link
 ```
 
 Yeeha! :horse: Now you're able to use the `dago` command everywhere!
-
-**Please note:**
 
 ## Commands
 
