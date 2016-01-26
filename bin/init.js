@@ -10,7 +10,7 @@ const config = require('../lib/config')
 const exists = require('../lib/etc').exists
 
 const walker = walk.walk(template, {
-  filters: [config.outputDir]
+  filters: [path.parse(config.outputDir).base]
 })
 
 walker.on('file', function (root, fileStats, next) {

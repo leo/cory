@@ -5,7 +5,6 @@ const path = require('path')
 const handlebars = require('handlebars')
 
 const config = require('../lib/config')
-const output = process.cwd() + config.outputDir
 const exists = require('../lib/etc').exists
 
 const colors = require('colors')
@@ -21,8 +20,8 @@ try {
   throw err
 }
 
-if (!exists(output)) {
-  fs.mkdirSync(output)
+if (!exists(config.outputDir)) {
+  fs.mkdirSync(config.outputDir)
 }
 
 function compileFile (resolve) {
@@ -36,7 +35,7 @@ function compileFile (resolve) {
   }
 
   var template = handlebars.compile(content)
-  var outputPath = output + '/' + meta.name + '.html'
+  var outputPath = config.outputDir + '/' + meta.name + '.html'
 
   fs.writeFile(outputPath, template(tags), function (err) {
     if (err) {
