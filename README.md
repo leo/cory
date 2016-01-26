@@ -48,7 +48,32 @@ npm link
     <td>Remove the generated output and all temporary files completely.</td>
   </tr>
   <tr>
-    <td>help</td>
-    <td>List all commands and options.</td>
+    <td>help [cmd]</td>
+    <td>List options for the specified command.</td>
+  </tr>
+</table>
+
+## Options
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Description</th>
+  </thead>
+  <tr>
+    <td>-h, --help</td>
+    <td>Output </td>
+  </tr>
+  <tr>
+    <td>-V, --version</td>
+    <td>Output the version of the dago instance on your device.</td>
+  </tr>
+  <tr>
+    <td>-p, --port &#60;port&#62;</td>
+    <td>The port on which your site will be available.</td>
+  </tr>
+  <tr>
+    <td>-w, --watch</td>
+    <td>Rebuild site if files change</td>
   </tr>
 </table>
