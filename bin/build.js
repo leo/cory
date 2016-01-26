@@ -8,6 +8,8 @@ const config = require('../lib/config')
 const exists = require('../lib/etc').exists
 
 const colors = require('colors')
+const rollup = require('rollup')
+const babel = require('rollup-plugin-babel')
 
 const tags = {
   greeting: 'Hello!'
@@ -48,6 +50,15 @@ function compileFile (resolve) {
 const pages = files.reduce((promiseChain, file) => {
   return promiseChain.then(new Promise(compileFile.bind(file)))
 }, Promise.resolve())
+
+rollup.rollup({
+  entry: process.cwd() + '/assets/main.js'
+}).then(function (bundle) {
+  pages.then(bundle.write({
+    dest: config.outputDir + '/assets/app.js',
+    sourceMap: true
+  }))
+})
 
 pages.then(function () {
   const timerEnd = new Date().getTime()
