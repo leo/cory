@@ -1,6 +1,12 @@
 # dago
 Static site generator
 
+## Usage
+
+```bash
+dago [options] [command]
+```
+
 ## Contribute
 
 Uninstall dago if it's already installed
@@ -9,10 +15,10 @@ Uninstall dago if it's already installed
 npm uninstall dago -g
 ```
 
-[Fork](https://help.github.com/articles/fork-a-repo/) this repo and clone it locally
+Clone this repository
 
 ```bash
-git clone <the_url_of_your_fork>
+git clone https://github.com/leo/dago.git
 cd dago
 ```
 
@@ -22,7 +28,9 @@ Link the app to the global module directory
 npm link
 ```
 
-:dizzy: Yey! Now you're able to ues the `dago` command everywhere in your command line!
+Yeeha! :horse: Now you're able to use the `dago` command everywhere!
+
+**Please note:**
 
 ## Commands
 
@@ -41,14 +49,14 @@ npm link
   </tr>
   <tr>
     <td>init</td>
-    <td>Creates a new site and places it in the current folder.</td>
+    <td>Creates a new site and places it in the current folder. The app won't allow you to use this command within the <code>template</code> directory of this project, since it would overwrite all files.</td>
   </tr>
   <tr>
     <td>clean</td>
     <td>Remove the generated output and all temporary files completely.</td>
   </tr>
   <tr>
-    <td>help [cmd]</td>
+    <td>help&nbsp;[command]</td>
     <td>List options for the specified command.</td>
   </tr>
 </table>
