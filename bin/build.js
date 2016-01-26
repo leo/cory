@@ -77,7 +77,8 @@ styles.forEach(function (file) {
 
   sass.render({
     file: path.resolve( 'assets/styles/' + file),
-    outFile: outputFile
+    outFile: outputFile,
+    outputStyle: 'compressed'
   }, function (err, result) {
     if (err) {
       throw err
