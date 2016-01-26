@@ -57,12 +57,12 @@ npm link
 
 <table>
   <thead>
-    <th>Name</th>
+    <th>Usage</th>
     <th>Description</th>
   </thead>
   <tr>
     <td>-h, --help</td>
-    <td>Output </td>
+    <td>Output all commands and options.</td>
   </tr>
   <tr>
     <td>-V, --version</td>
