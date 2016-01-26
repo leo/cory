@@ -21,7 +21,8 @@
     "dago": "index.js",
     "dago-serve": "bin/serve.js",
     "dago-build": "bin/build.js",
-    "dago-init": "bin/init.js"
+    "dago-init": "bin/init.js",
+    "dago-clean": "bin/clean.js"
   },
   "greenkeeper": {
     "emails": false
