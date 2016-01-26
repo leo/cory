@@ -10,6 +10,7 @@ const exists = require('../lib/etc').exists
 const colors = require('colors')
 const rollup = require('rollup')
 const babel = require('rollup-plugin-babel')
+const sass = require('node-sass')
 
 const tags = {
   greeting: 'Hello!'
@@ -20,12 +21,15 @@ if (!exists(process.cwd() + '/config.json')) {
   process.exit(1)
 }
 
+const timerStart = new Date().getTime()
+
 try {
-  const timerStart = new Date().getTime()
-  const files = fs.readdirSync(process.cwd() + '/pages')
+  const views = fs.readdirSync(process.cwd() + '/pages')
 } catch (err) {
   throw err
 }
+
+const styles = fs.readdirSync(process.cwd() + '/assets/styles')
 
 if (!exists(config.outputDir)) {
   fs.mkdirSync(config.outputDir)
@@ -52,7 +56,7 @@ function compileFile (resolve) {
   })
 }
 
-const pages = files.reduce((promiseChain, file) => {
+const pages = views.reduce((promiseChain, file) => {
   return promiseChain.then(new Promise(compileFile.bind(file)))
 }, Promise.resolve())
 
@@ -66,6 +70,26 @@ rollup.rollup({
     dest: config.outputDir + '/assets/app.js',
     sourceMap: true
   }))
+})
+
+styles.forEach(function (file) {
+  const outputFile = config.outputDir + '/assets/styles.css'
+
+  sass.render({
+    file: path.resolve( 'assets/styles/' + file),
+    outFile: outputFile
+  }, function (err, result) {
+    if (err) {
+      throw err
+    }
+
+    fs.writeFile(outputFile, result.css, function (err) {
+      if (err) {
+        throw err
+      }
+      console.log('wrote!')
+    });
+  })
 })
 
 pages.then(function () {
