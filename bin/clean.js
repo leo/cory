@@ -3,7 +3,9 @@
 const fs = require('fs')
 const colors = require('colors')
 
-const exists = require('../lib/etc').exists
+const etc = require('../lib/etc')
+const exists = etc.exists
+const deleteDir = etc.deleteDir
 const output = process.cwd() + '/dist'
 
 if (!exists(process.cwd() + '/config.json')) {
@@ -17,17 +19,4 @@ if (!exists(output)) {
   process.exit(1)
 }
 
-function deleteOutput(path) {
-  fs.readdirSync(output).forEach(function (file, index) {
-    var curPath = path + '/' + file
-
-    if (fs.statSync(curPath).isDirectory()) {
-      deleteOutput(curPath)
-    } else {
-      fs.unlinkSync(curPath)
-    }
-  })
-  fs.rmdirSync(path)
-}
-
-deleteOutput(output)
+deleteDir(output)
