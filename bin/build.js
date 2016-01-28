@@ -13,7 +13,8 @@ const babel = require('rollup-plugin-babel')
 const sass = require('node-sass')
 
 const tags = {
-  greeting: 'Hello!'
+  greeting: 'Hello!',
+  package: require(process.cwd() + '/package.json')
 }
 
 if (!exists(process.cwd() + '/config.json')) {
