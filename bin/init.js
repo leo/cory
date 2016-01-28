@@ -36,5 +36,5 @@ walker.on('file', function (root, fileStats, next) {
 })
 
 walker.on('end', function() {
-  console.log('Generated new rap site in ' + process.cwd().gray)
+  console.log('Generated new site in ' + process.cwd().gray)
 })
