@@ -57,7 +57,7 @@ function compileFile (resolve) {
   })
 }
 
-const pages = views.reduce((promiseChain, file) => {
+const assets = views.reduce((promiseChain, file) => {
   return promiseChain.then(new Promise(compileFile.bind(file)))
 }, Promise.resolve())
 
@@ -67,34 +67,36 @@ rollup.rollup({
     babel()
   ]
 }).then(function (bundle) {
-  pages.then(bundle.write({
+  assets.then(bundle.write({
     dest: config.outputDir + '/assets/app.js',
     sourceMap: true
   }))
 })
 
-styles.forEach(function (file) {
-  const outputFile = config.outputDir + '/assets/styles.css'
+assets.then(new Promise(function (resolve, reject) {
+  styles.forEach(function (file) {
+    const outputFile = config.outputDir + '/assets/styles.css'
 
-  sass.render({
-    file: path.resolve( 'assets/styles/' + file),
-    outFile: outputFile,
-    outputStyle: 'compressed'
-  }, function (err, result) {
-    if (err) {
-      throw err
-    }
-
-    fs.writeFile(outputFile, result.css, function (err) {
+    sass.render({
+      file: path.resolve( 'assets/styles/' + file),
+      outFile: outputFile,
+      outputStyle: 'compressed'
+    }, function (err, result) {
       if (err) {
-        throw err
+        reject(err)
       }
-      console.log('wrote!')
-    });
-  })
-})
 
-pages.then(function () {
+      fs.writeFile(outputFile, result.css, function (err) {
+        if (err) {
+          reject(err)
+        }
+        resolve()
+      });
+    })
+  })
+}))
+
+assets.then(function () {
   const timerEnd = new Date().getTime()
   console.log(`Built the site in ${timerEnd - timerStart}ms.`.green);
 }, function (reason) {
