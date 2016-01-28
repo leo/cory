@@ -85,3 +85,14 @@ Yeeha! :horse: Now you're able to use the `dago` command everywhere!
     <td>Rebuild site if files change</td>
   </tr>
 </table>
+
+## Configuration
+
+There are a few properties that can be changed by simply adding them to a `config.json` file within your project:
+
+```js
+{
+  "port": 4000, // See option "--port" (CLI option will overwrite this)
+  "outputDir": "dist" // Path of the directory that will contain the generated site
+}
+```
