@@ -30,6 +30,7 @@ try {
   throw err
 }
 
+const defaultLayout = fs.readFileSync(process.cwd() + '/layouts/default.hbs', 'utf8')
 const styles = fs.readdirSync(process.cwd() + '/assets/styles')
 
 if (!exists(config.outputDir)) {
@@ -46,10 +47,13 @@ function compileFile (resolve) {
     reject(err)
   }
 
-  var template = handlebars.compile(content)
+  var layout = handlebars.compile(defaultLayout)({
+    body: handlebars.compile(content)(tags)
+  })
+
   var outputPath = config.outputDir + '/' + meta.name + '.html'
 
-  fs.writeFile(outputPath, template(tags), function (err) {
+  fs.writeFile(outputPath, layout, function (err) {
     if (err) {
       throw err
     }
