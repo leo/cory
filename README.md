@@ -1,5 +1,8 @@
 # rap
-Static site generator
+
+Ever wanted to create a static site while taking advantage of all the amazing things that are available within the JavaScript universe? Then you're at the right place!
+
+Rap combines clean, logic-less templates with a straightforward development workflow and allows you to set up a new site in a few seconds.
 
 ## Usage
 
