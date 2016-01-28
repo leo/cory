@@ -1,27 +1,27 @@
-# dago
+# rap
 Static site generator
 
 ## Usage
 
 ```bash
-dago [options] [command]
+rap [options] [command]
 ```
 
 Theres a list of all options and commands [below](#commands).
 
 ## Contribute
 
-Uninstall dago if it's already installed
+Uninstall rap if it's already installed
 
 ```bash
-npm uninstall dago -g
+npm uninstall rap -g
 ```
 
 Clone this repository
 
 ```bash
-git clone https://github.com/leo/dago.git
-cd dago
+git clone https://github.com/leo/rap.git
+cd rap
 ```
 
 Link the app to the global module directory
@@ -30,7 +30,7 @@ Link the app to the global module directory
 npm link
 ```
 
-Yeeha! :horse: Now you're able to use the `dago` command everywhere!
+Yeeha! :horse: Now you're able to use the `rap` command everywhere!
 
 ## Commands
 
@@ -74,7 +74,7 @@ Yeeha! :horse: Now you're able to use the `dago` command everywhere!
   </tr>
   <tr>
     <td>-V, --version</td>
-    <td>Output the version of the dago instance on your device.</td>
+    <td>Output the version of the rap instance on your device.</td>
   </tr>
   <tr>
     <td>-p, --port &#60;port&#62;</td>

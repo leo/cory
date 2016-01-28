@@ -1,5 +1,5 @@
 {
-  "name": "dago",
+  "name": "rap",
   "version": "0.1.0",
   "description": "Generate static sites easily",
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leo/dago.git"
+    "url": "git+https://github.com/leo/rap.git"
   },
   "keywords": [
     "static",
@@ -18,19 +18,19 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "dago": "index.js",
-    "dago-serve": "bin/serve.js",
-    "dago-build": "bin/build.js",
-    "dago-init": "bin/init.js",
-    "dago-clean": "bin/clean.js"
+    "rap": "index.js",
+    "rap-serve": "bin/serve.js",
+    "rap-build": "bin/build.js",
+    "rap-init": "bin/init.js",
+    "rap-clean": "bin/clean.js"
   },
   "greenkeeper": {
     "emails": false
   },
   "bugs": {
-    "url": "https://github.com/leo/dago/issues"
+    "url": "https://github.com/leo/rap/issues"
   },
-  "homepage": "https://github.com/leo/dago#readme",
+  "homepage": "https://github.com/leo/rap#readme",
   "dependencies": {
     "babel-preset-es2015-rollup": "^1.1.1",
     "colors": "^1.1.2",
