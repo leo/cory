@@ -6,6 +6,14 @@ Cory combines clean, logic-less [handlebars](http://handlebarsjs.com) templates 
 
 ## Usage
 
+Install it
+
+```bash
+npm install cory -g
+```
+
+Run it
+
 ```bash
 cory [options] [command]
 ```
