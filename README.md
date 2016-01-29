@@ -85,7 +85,7 @@ Yeeha! :horse: Now you're able to use the `cory` command everywhere!
   </tr>
   <tr>
     <td>-w, --watch</td>
-    <td>Rebuild site if files change (currently only for <code>build</code>)</td>
+    <td>Rebuild site if files change (currently only for <code>build</code>, <code>serve</code> will follow)</td>
   </tr>
 </table>
 
