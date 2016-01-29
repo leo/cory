@@ -6,16 +6,47 @@ const handlebars = require('handlebars')
 
 const config = require('../lib/config')
 const exists = require('../lib/etc').exists
+const compile = require('../lib/compile')
 
 const inst = require('commander')
 const colors = require('colors')
-const rollup = require('rollup')
-const babel = require('rollup-plugin-babel')
-const sass = require('node-sass')
 
 inst
   .option('-w, --watch', 'Rebuild site if files change')
   .parse(process.argv)
+
+function doneCompiling(file) {
+  const which = file.replace(process.cwd(), '')
+  console.log('File ' + which.gray + ' changed, rebuilt finished')
+}
+
+if (inst.watch) {
+  const chokidar = require('chokidar')
+
+  const watcher = chokidar.watch(process.cwd(), {
+    ignored: /dist/
+  })
+
+  process.on('SIGINT', function () {
+    watcher.close()
+    process.exit(0)
+  })
+
+  watcher.on('change', (which) => {
+    const details = path.parse(which)
+    const type = details.ext.split('.')[1]
+
+    switch (type) {
+      case 'scss':
+        compile.sass(doneCompiling, console.log, which)
+        break
+      case 'js':
+        compile.js(doneCompiling, console.log, which)
+        break
+    }
+    console.log(type)
+  })
+}
 
 const tags = {
   greeting: 'Hello!',
@@ -39,7 +70,10 @@ const defaultLayout = fs.readFileSync(process.cwd() + '/layouts/default.hbs', 'u
 const styles = fs.readdirSync(process.cwd() + '/assets/styles')
 
 if (!exists(config.outputDir)) {
-  fs.mkdirSync(config.outputDir)
+  const dir = config.outputDir
+
+  fs.mkdirSync(dir)
+  fs.mkdirSync(dir + '/assets')
 }
 
 function compileFile (resolve) {
@@ -70,38 +104,13 @@ const assets = views.reduce((promiseChain, file) => {
   return promiseChain.then(new Promise(compileFile.bind(file)))
 }, Promise.resolve())
 
-rollup.rollup({
-  entry: process.cwd() + '/assets/scripts/main.js',
-  plugins: [
-    babel()
-  ]
-}).then(function (bundle) {
-  assets.then(bundle.write({
-    dest: config.outputDir + '/assets/app.js',
-    sourceMap: true
-  }))
-})
+assets.then(new Promise((resolve, reject) => {
+  compile.js(resolve, reject)
+}))
 
 assets.then(new Promise(function (resolve, reject) {
-  styles.forEach(function (file) {
-    const outputFile = config.outputDir + '/assets/styles.css'
-
-    sass.render({
-      file: path.resolve( 'assets/styles/' + file),
-      outFile: outputFile,
-      outputStyle: 'compressed'
-    }, function (err, result) {
-      if (err) {
-        reject(err)
-      }
-
-      fs.writeFile(outputFile, result.css, function (err) {
-        if (err) {
-          reject(err)
-        }
-        resolve()
-      });
-    })
+  styles.forEach((file) => {
+    compile.sass(resolve, reject, file)
   })
 }))
 

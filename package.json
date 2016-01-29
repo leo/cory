@@ -33,6 +33,7 @@
   "homepage": "https://github.com/leo/cory#readme",
   "dependencies": {
     "babel-preset-es2015-rollup": "^1.1.1",
+    "chokidar": "^1.4.2",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
     "handlebars": "^4.0.5",
