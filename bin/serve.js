@@ -16,7 +16,6 @@ var config = require('../lib/config')
 
 inst
   .option('-p, --port <port>', 'The port on which your site will be available')
-  .option('-w, --watch', 'Rebuild site if files change')
   .parse(process.argv)
 
 if(inst.port) {
