@@ -20,7 +20,7 @@ if (!exists(process.cwd() + '/config.json')) {
 
 if (!exists(config.outputDir)) {
   try {
-    exec('rap build', {stdio: [0, 1]})
+    exec('cory build', {stdio: [0, 1]})
   } catch (err) {
     console.error(err)
     process.exit(1)

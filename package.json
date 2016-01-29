@@ -1,5 +1,5 @@
 {
-  "name": "rap",
+  "name": "cory",
   "version": "0.1.0",
   "description": "Generate static sites easily",
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leo/rap.git"
+    "url": "git+https://github.com/leo/cory.git"
   },
   "keywords": [
     "static",
@@ -18,19 +18,19 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "rap": "index.js",
-    "rap-serve": "bin/serve.js",
-    "rap-build": "bin/build.js",
-    "rap-init": "bin/init.js",
-    "rap-clean": "bin/clean.js"
+    "cory": "index.js",
+    "cory-serve": "bin/serve.js",
+    "cory-build": "bin/build.js",
+    "cory-init": "bin/init.js",
+    "cory-clean": "bin/clean.js"
   },
   "greenkeeper": {
     "emails": false
   },
   "bugs": {
-    "url": "https://github.com/leo/rap/issues"
+    "url": "https://github.com/leo/cory/issues"
   },
-  "homepage": "https://github.com/leo/rap#readme",
+  "homepage": "https://github.com/leo/cory#readme",
   "dependencies": {
     "babel-preset-es2015-rollup": "^1.1.1",
     "colors": "^1.1.2",
