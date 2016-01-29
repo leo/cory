@@ -1,3 +1,1 @@
-import tell from './other'
-
-tell('Oh, that\'s neat!')
+console.log('Oh, this is awesome!')

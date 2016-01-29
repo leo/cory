@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 const path = require('path')
-const handlebars = require('handlebars')
+const walk = require('walk')
 
 const config = require('../lib/config')
 const exists = require('../lib/etc').exists
@@ -15,10 +15,55 @@ inst
   .option('-w, --watch', 'Rebuild site if files change')
   .parse(process.argv)
 
-function doneCompiling(file) {
-  const which = file.replace(process.cwd(), '')
-  console.log('File ' + which.gray + ' changed, rebuilt finished')
+if (!exists(process.cwd() + '/config.json')) {
+  console.error('No site in here!'.red)
+  process.exit(1)
 }
+
+const timerStart = new Date().getTime()
+
+const walker = walk.walk(process.cwd(), {
+  filters: ['layouts', 'dist']
+})
+
+walker.on('file', function (root, fileStat, next) {
+  const ignored = [
+    'package.json',
+    'config.json'
+  ]
+
+  if (ignored.indexOf(fileStat.name) > -1 || fileStat.name.charAt(0) == '.') {
+    return next()
+  }
+
+  // You can't reference a object property within itself
+  // So it's better to do it like this
+  const paths = new function () {
+    this.full = path.resolve(root, fileStat.name)
+    this.relative = this.full.replace(process.cwd(), '').replace('scss', 'css')
+  }
+
+  const ext = path.basename(paths.full).split('.')[1]
+
+  switch (ext) {
+    case 'js':
+      compile.js(paths)
+      break
+    case 'scss':
+      compile.sass(paths)
+      break
+    case 'hbs':
+      compile.handlebars(paths)
+      break
+  }
+
+  next()
+})
+
+walker.on('end', function () {
+  const timerEnd = new Date().getTime()
+  console.log(`Built the site in ${timerEnd - timerStart}ms.`.green);
+})
 
 if (inst.watch) {
   const chokidar = require('chokidar')
@@ -33,89 +78,25 @@ if (inst.watch) {
   })
 
   watcher.on('change', (which) => {
-    const details = path.parse(which)
-    const type = details.ext.split('.')[1]
+    const paths = new function () {
+      this.full = which
+      this.relative = this.full.replace(process.cwd(), '').replace('scss', 'css')
+    }
 
-    switch (type) {
+    const ext = path.parse(paths.full).ext.split('.')[1]
+
+    switch (ext) {
       case 'scss':
-        compile.sass(doneCompiling, console.log, which)
+        compile.sass(paths)
         break
       case 'js':
-        compile.js(doneCompiling, console.log, which)
+        compile.js(paths)
+        break
+      case 'hbs':
+        compile.handlebars(paths)
         break
     }
+
+    console.log('File ' + paths.relative.gray + ' changed, rebuilt finished')
   })
 }
-
-const tags = {
-  greeting: 'Hello!',
-  package: require(process.cwd() + '/package.json')
-}
-
-if (!exists(process.cwd() + '/config.json')) {
-  console.error('No site in here!'.red)
-  process.exit(1)
-}
-
-const timerStart = new Date().getTime()
-
-try {
-  const views = fs.readdirSync(process.cwd() + '/pages')
-} catch (err) {
-  throw err
-}
-
-const defaultLayout = fs.readFileSync(process.cwd() + '/layouts/default.hbs', 'utf8')
-const styles = fs.readdirSync(process.cwd() + '/assets/styles')
-
-if (!exists(config.outputDir)) {
-  const dir = config.outputDir
-
-  fs.mkdirSync(dir)
-  fs.mkdirSync(dir + '/assets')
-}
-
-function compileFile (resolve) {
-  var meta = path.parse(process.cwd() + '/pages/' + this)
-  var fullPath = meta.dir + '/' + meta.base
-
-  try {
-    var content = fs.readFileSync(fullPath, 'utf8')
-  } catch (err) {
-    reject(err)
-  }
-
-  var layout = handlebars.compile(defaultLayout)({
-    body: handlebars.compile(content)(tags)
-  })
-
-  var outputPath = config.outputDir + '/' + meta.name + '.html'
-
-  fs.writeFile(outputPath, layout, function (err) {
-    if (err) {
-      throw err
-    }
-    resolve()
-  })
-}
-
-const assets = views.reduce((promiseChain, file) => {
-  return promiseChain.then(new Promise(compileFile.bind(file)))
-}, Promise.resolve())
-
-assets.then(new Promise((resolve, reject) => {
-  compile.js(resolve, reject)
-}))
-
-assets.then(new Promise(function (resolve, reject) {
-  styles.forEach((file) => {
-    compile.sass(resolve, reject, file)
-  })
-}))
-
-assets.then(function () {
-  const timerEnd = new Date().getTime()
-  console.log(`Built the site in ${timerEnd - timerStart}ms.`.green);
-}, function (reason) {
-  throw reason
-})
