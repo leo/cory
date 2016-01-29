@@ -1,7 +1,7 @@
 {
   "name": "cory",
   "version": "0.1.0",
-  "description": "Generate static sites easily",
+  "description": "Static site generator for JavaScript lovers",
   "scripts": {
     "test": "mocha"
   },
