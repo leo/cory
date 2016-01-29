@@ -44,7 +44,6 @@ if (inst.watch) {
         compile.js(doneCompiling, console.log, which)
         break
     }
-    console.log(type)
   })
 }
 
