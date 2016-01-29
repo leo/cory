@@ -7,8 +7,6 @@ app
 
 app
   .command('serve', 'Serve your site locally')
-  .option('-p, --port <port>', 'The port on which your site will be available')
-  .option('-w, --watch', 'Rebuild site if files change')
 
 app
   .command('build', 'Buily your site')

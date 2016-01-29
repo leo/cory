@@ -7,10 +7,15 @@ const handlebars = require('handlebars')
 const config = require('../lib/config')
 const exists = require('../lib/etc').exists
 
+const inst = require('commander')
 const colors = require('colors')
 const rollup = require('rollup')
 const babel = require('rollup-plugin-babel')
 const sass = require('node-sass')
+
+inst
+  .option('-w, --watch', 'Rebuild site if files change')
+  .parse(process.argv)
 
 const tags = {
   greeting: 'Hello!',

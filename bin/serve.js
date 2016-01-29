@@ -6,12 +6,22 @@ const path = require('path')
 const fs = require('fs')
 const exec = require('child_process').execSync
 
+const inst = require('commander')
 const open = require('open')
 const mime = require('mime')
 const colors = require('colors')
-
-const config = require('../lib/config')
 const exists = require('../lib/etc').exists
+
+var config = require('../lib/config')
+
+inst
+  .option('-p, --port <port>', 'The port on which your site will be available')
+  .option('-w, --watch', 'Rebuild site if files change')
+  .parse(process.argv)
+
+if(inst.port) {
+  config.port = inst.port
+}
 
 if (!exists(process.cwd() + '/config.json')) {
   console.error('No site in here!'.red)
