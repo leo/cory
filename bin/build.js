@@ -77,7 +77,7 @@ if (inst.watch) {
   const chokidar = require('chokidar')
 
   const watcher = chokidar.watch(process.cwd(), {
-    ignored: /dist|layouts/
+    ignored: /dist|layouts|.DS_Store/
   })
 
   process.on('SIGINT', function () {
