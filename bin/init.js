@@ -31,7 +31,11 @@ walker.on('file', function (root, fileStats, next) {
   const targetPath = process.cwd() +  '/' + subPath + '/' + fileStats.name
   const target = fs.createWriteStream(targetPath)
 
-  fs.createReadStream(way).pipe(target)
+  const original = fs.createReadStream(way).pipe(target)
+
+  target.on('error', console.error)
+  original.on('error', console.error)
+
   next()
 })
 
