@@ -1,3 +1,4 @@
 {
-  "port": 4200
+  "port": 4200,
+  "sourceMaps": true
 }
