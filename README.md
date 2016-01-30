@@ -71,6 +71,7 @@ There are a few properties that can be changed by simply adding them to a `confi
 ```js
 {
   "port": 4000, // See option "--port" (CLI option will overwrite this)
-  "outputDir": "dist" // Path of the directory that will contain the generated site
+  "outputDir": "dist", // Path of the directory that will contain the generated site
+  "sourceMaps": true // Enable/disable the generation of sourcemaps for assets
 }
 ```
