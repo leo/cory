@@ -93,6 +93,11 @@ server.listen(config.port, function () {
     })
 
     require('../lib/watch')(browserSync)
+
+    process.on('SIGINT', () => {
+      browserSync.exit()
+      process.exit(0)
+    })
   }
 
   open(url)
