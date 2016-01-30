@@ -89,7 +89,9 @@ server.listen(config.port, function () {
     const browserSync = require('browser-sync').create()
 
     browserSync.init({
-      proxy: 'http://localhost:' + config.port
+      proxy: 'http://localhost:' + config.port,
+      ui: false,
+      notify: false
     })
 
     require('../lib/watch')(browserSync)
