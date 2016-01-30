@@ -10,15 +10,16 @@ const inst = require('commander')
 const open = require('open')
 const mime = require('mime')
 const colors = require('colors')
-const exists = require('../lib/etc').exists
 
+const exists = require('../lib/etc').exists
 var config = require('../lib/config')
 
 inst
   .option('-p, --port <port>', 'The port on which your site will be available')
+  .option('-w, --watch', 'Rebuild site if files change')
   .parse(process.argv)
 
-if(inst.port) {
+if (inst.port) {
   config.port = inst.port
 }
 
@@ -83,5 +84,10 @@ server.listen(config.port, function () {
   const url = 'http://localhost:' + port
 
   console.log('Your site is running at ' + url)
+
+  if (inst.watch) {
+    require('../lib/watch')()
+  }
+
   open(url)
 })
