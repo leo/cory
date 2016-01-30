@@ -1,5 +1,7 @@
 # cory
 
+[![Join the chat at https://gitter.im/leo/cory](https://badges.gitter.im/leo/cory.svg)](https://gitter.im/leo/cory?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Ever wanted to create a static site while taking advantage of all the amazing things that are available within the JavaScript universe? Then you're at the right place!
 
 Cory combines clean, logic-less [handlebars](http://handlebarsjs.com) templates with a straightforward development workflow and allows you to set up a new site in a few seconds.
