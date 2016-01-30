@@ -86,7 +86,13 @@ server.listen(config.port, function () {
   console.log('Your site is running at ' + url)
 
   if (inst.watch) {
-    require('../lib/watch')()
+    const browserSync = require('browser-sync').create()
+
+    browserSync.init({
+      proxy: 'http://localhost:' + config.port
+    })
+
+    require('../lib/watch')(browserSync)
   }
 
   open(url)
