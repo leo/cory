@@ -79,7 +79,9 @@ const server = http.createServer(function (request, response) {
 
 })
 
-server.listen(config.port, function () {
+const subPort = parseInt(config.port) - 1
+
+server.listen(inst.watch ? subPort : config.port, function () {
   const port = this.address().port
   const url = 'http://localhost:' + port
 
@@ -87,8 +89,9 @@ server.listen(config.port, function () {
     const browserSync = require('browser-sync').create()
 
     browserSync.init({
-      proxy: 'http://localhost:' + config.port,
+      proxy: 'http://localhost:' + subPort,
       ui: false,
+      port: config.port,
       notify: false,
       logPrefix: 'cory'
     })
