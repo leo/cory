@@ -62,7 +62,7 @@ Yeeha! :horse: Now you're able to use the `cory` command everywhere!
 | -h, --help                | Output all commands and options. |
 | -V, --version             | Output the version of the cory instance on your device. |
 | -p, --port &#60;port&#62; | The port on which your site will be available. |
-| -w, --watch               | Rebuild site if files change (currently only for `build`, `serve` will follow) |
+| -w, --watch               | Rebuild site if files change (can be used with `build` or `serve`) |
 
 ## Configuration
 
