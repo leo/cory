@@ -6,7 +6,7 @@ const walk = require('walk')
 
 const config = require('../lib/config')
 const exists = require('../lib/etc').exists
-const compile = require('../lib/compile')
+const compiler = require('../lib/compile')
 
 const inst = require('commander')
 const colors = require('colors')
@@ -18,6 +18,26 @@ inst
 if (!exists(process.cwd() + '/config.json')) {
   console.error('No site in here!'.red)
   process.exit(1)
+}
+
+function compile (paths, callback) {
+  const ext = path.parse(paths.full).ext.split('.')[1]
+
+  switch (ext) {
+    case 'scss':
+      compiler.sass(paths)
+      break
+    case 'js':
+      compiler.js(paths)
+      break
+    case 'hbs':
+      compiler.handlebars(paths)
+      break
+  }
+
+  if (typeof callback === 'function') {
+    callback()
+  }
 }
 
 const timerStart = new Date().getTime()
@@ -43,21 +63,9 @@ walker.on('file', function (root, fileStat, next) {
     this.relative = this.full.replace(process.cwd(), '').replace('scss', 'css')
   }
 
-  const ext = path.basename(paths.full).split('.')[1]
-
-  switch (ext) {
-    case 'js':
-      compile.js(paths)
-      break
-    case 'scss':
-      compile.sass(paths)
-      break
-    case 'hbs':
-      compile.handlebars(paths)
-      break
-  }
-
-  next()
+  compile(paths, function () {
+    next()
+  })
 })
 
 walker.on('end', function () {
@@ -83,20 +91,8 @@ if (inst.watch) {
       this.relative = this.full.replace(process.cwd(), '').replace('scss', 'css')
     }
 
-    const ext = path.parse(paths.full).ext.split('.')[1]
-
-    switch (ext) {
-      case 'scss':
-        compile.sass(paths)
-        break
-      case 'js':
-        compile.js(paths)
-        break
-      case 'hbs':
-        compile.handlebars(paths)
-        break
-    }
-
-    console.log('File ' + paths.relative.gray + ' changed, rebuilt finished')
+    compile(paths, () => {
+      console.log('File ' + paths.relative.gray + ' changed, rebuilt finished')
+    })
   })
 }
