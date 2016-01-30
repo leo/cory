@@ -33,6 +33,8 @@ function compile (paths, callback) {
     case 'hbs':
       compiler.handlebars(paths)
       break
+    default:
+      compiler.copy(paths)
   }
 
   if (typeof callback === 'function') {
