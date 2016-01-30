@@ -83,8 +83,6 @@ server.listen(config.port, function () {
   const port = this.address().port
   const url = 'http://localhost:' + port
 
-  console.log('Your site is running at ' + url)
-
   if (inst.watch) {
     const browserSync = require('browser-sync').create()
 
@@ -102,6 +100,7 @@ server.listen(config.port, function () {
       process.exit(0)
     })
   } else {
+    console.log('Your site is running at ' + url)
     open(url)
   }
 })
