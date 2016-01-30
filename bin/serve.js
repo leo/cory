@@ -98,7 +98,7 @@ server.listen(config.port, function () {
       browserSync.exit()
       process.exit(0)
     })
+  } else {
+    open(url)
   }
-
-  open(url)
 })
