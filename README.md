@@ -66,7 +66,7 @@ Yeeha! :horse: Now you're able to use the `cory` command everywhere!
 
 ## Configuration
 
-There are a few properties that can be changed by simply adding them to a `config.json` file within your project:
+There are a few properties that can be changed by simply adding them to a `config.json` file within your project. The JSON object below shows all available options and their default value:
 
 ```js
 {
