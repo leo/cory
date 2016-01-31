@@ -20,7 +20,7 @@ Run it
 cory [options] [command]
 ```
 
-Theres a list of all options and commands [below](#commands).
+Theres a list of all options and commands [below](#commands). For a step-by-step guide, check [this](https://github.com/leo/cory/wiki) out.
 
 ## Contribute
 
