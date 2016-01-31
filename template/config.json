@@ -1,4 +1,5 @@
 {
+  "title": "Awesome site",
   "port": 4000,
   "sourceMaps": true
 }
