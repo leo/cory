@@ -5,7 +5,7 @@ const path = require('path')
 const walk = require('walk')
 
 const config = require('../lib/config')
-const etc = require('../lib/etc')
+const exists = require('../lib/etc').isSite
 const compile = require('../lib/compiler').run
 
 const inst = require('commander')
@@ -15,7 +15,7 @@ inst
   .option('-w, --watch', 'Rebuild site if files change')
   .parse(process.argv)
 
-if (!etc.exists(process.cwd() + '/config.json')) {
+if (!exists()) {
   console.error('No site in here!'.red)
   process.exit(1)
 }

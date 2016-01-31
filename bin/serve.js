@@ -11,7 +11,7 @@ const open = require('open')
 const mime = require('mime')
 const colors = require('colors')
 
-const exists = require('../lib/etc').exists
+const etc = require('../lib/etc')
 var config = require('../lib/config')
 
 inst
@@ -23,12 +23,12 @@ if (inst.port) {
   config.port = inst.port
 }
 
-if (!exists(process.cwd() + '/config.json')) {
+if (!etc.isSite()) {
   console.error('No site in here!'.red)
   process.exit(1)
 }
 
-if (!exists(config.outputDir)) {
+if (!etc.exists(config.outputDir)) {
   try {
     exec('cory build', {stdio: [0, 1]})
   } catch (err) {

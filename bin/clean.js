@@ -7,7 +7,7 @@ const etc = require('../lib/etc')
 const config = require('../lib/config')
 const exists = etc.exists
 
-if (!exists(process.cwd() + '/config.json')) {
+if (!etc.isSite()) {
   console.error('No site in here!'.red)
   process.exit(1)
 }
