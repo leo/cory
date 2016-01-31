@@ -2,7 +2,12 @@
 <html>
 
   <head>
-    <title>This is a sample!</title>
+    {{#if page.title}}
+      <title>{{page.title}}</title>
+    {{else}}
+      <title>Title</title>
+    {{/if}}
+
     <link rel="stylesheet" href="/assets/styles/site.css">
   </head>
 
