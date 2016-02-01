@@ -33,8 +33,6 @@
   },
   "homepage": "https://github.com/leo/cory#readme",
   "dependencies": {
-    "babel-core": "^6.4.5",
-    "babel-preset-es2015": "^6.3.13",
     "browser-sync": "^2.11.1",
     "chokidar": "^1.4.2",
     "colors": "^1.1.2",
@@ -47,6 +45,7 @@
     "node-sass": "^3.4.2",
     "nodegit": "^0.9.0",
     "open": "0.0.5",
+    "uglify-js": "^2.6.1",
     "walk": "^2.3.9"
   }
 }
