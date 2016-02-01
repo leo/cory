@@ -19,6 +19,13 @@ if (!etc.isSite()) {
   process.exit(1)
 }
 
+try {
+  exec('cory build', {stdio: [0, 1]})
+} catch (err) {
+  console.error(err)
+  process.exit(1)
+}
+
 Repository.open(process.cwd())
 
 const found = new Promise(function (resolve, reject) {
@@ -90,7 +97,6 @@ found.then(function (repo, branch) {
     }
 
     process.exit(1)
-
   })
 
 })
