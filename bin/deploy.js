@@ -19,6 +19,21 @@ if (!etc.isSite()) {
   process.exit(1)
 }
 
+const pkg = require(process.cwd() + '/package.json')
+
+if (pkg.scripts && pkg.scripts.deploy) {
+  const cmd = pkg.scripts.deploy
+  console.log('> ' + cmd)
+
+  try {
+    exec(cmd, {stdio: [0, 1, 2]})
+  } catch (err) {
+    throw err
+  }
+
+  process.exit(1)
+}
+
 var repo
 
 Repository.open(process.cwd())

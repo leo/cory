@@ -53,7 +53,7 @@ Yeeha! :horse: Now you're able to use the `cory` command everywhere!
 | build               | Builds your site in the `outputDir` directory. |
 | init                | Creates a new site and places it in the current folder. The app won't allow you to use this command within the `template` directory of this project, since it would overwrite all files. |
 | clean               | Remove the generated output and all temporary files completely. |
-| deploy              | [Deploys](https://github.com/leo/cory/wiki/Deployment) your site to GitHub Pages. |
+| deploy              | [Deploys](https://github.com/leo/cory/wiki/Deployment) your site to GitHub Pages. If `package.json` has a "deploy" script, that will be run instead. |
 | help&nbsp;[command] | List options for the specified command. |
 
 ## Options
