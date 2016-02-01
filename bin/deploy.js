@@ -19,13 +19,6 @@ if (!etc.isSite()) {
   process.exit(1)
 }
 
-try {
-  exec('cory build', {stdio: [0, 1]})
-} catch (err) {
-  console.error(err)
-  process.exit(1)
-}
-
 var repo
 
 Repository.open(process.cwd())
@@ -53,6 +46,13 @@ const found = new Promise(function (resolve, reject) {
 })
 
 found.then(function () {
+
+  try {
+    exec('cory build', {stdio: [0, 1]})
+  } catch (err) {
+    console.error(err)
+    process.exit(1)
+  }
 
   const walker = walk.walk(process.cwd() + '/dist', {
     filters: ['.git']
