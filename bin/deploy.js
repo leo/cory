@@ -12,7 +12,7 @@ if (!exists()) {
 const branch = new Promise(function (resolve, reject) {
   git.Repository.open(process.cwd()).then(function (repo) {
 
-    git.Branch.lookup(repo, 'gh-pages', 2).then(function (reference) {
+    git.Branch.lookup(repo, 'gh-pages', 1).then(function (reference) {
       resolve(repo, reference)
     }).catch(function (reason) {
       reject(reason.toString())
@@ -31,6 +31,7 @@ const branch = new Promise(function (resolve, reject) {
 
 branch.then(function (repo, branch) {
   console.log('Yeah, branch exists!')
+  process.exit(1)
 })
 
 branch.catch(function (reason) {
