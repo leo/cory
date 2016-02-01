@@ -18,6 +18,6 @@ if (!exists(config.outputDir)) {
   process.exit(1)
 }
 
-etc.deleteDir(config.outputDir, function () {
+etc.deleteDir(config.outputDir, false, function () {
   console.log('Everything cleaned up!'.green)
 })

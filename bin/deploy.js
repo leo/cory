@@ -78,7 +78,7 @@ found.then(function (repo, branch) {
       throw err
     }
 
-    etc.deleteDir(process.cwd(), function() {}, true)
+    etc.deleteDir(process.cwd(), true)
 
     for (file of output) {
       try {
