@@ -23,7 +23,7 @@ if (!exists()) {
 const timerStart = new Date().getTime()
 
 const walker = walk.walk(process.cwd(), {
-  filters: ['layouts', 'dist']
+  filters: ['layouts', 'dist', '.git']
 })
 
 walker.on('file', function (root, fileStat, next) {
