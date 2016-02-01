@@ -12,7 +12,7 @@ const fs = require('fs')
 
 const Branch = git.Branch
 const Repository = git.Repository
-const Index = git.Index
+const Commit = git.Commit
 
 if (!etc.isSite()) {
   console.error('No site in here!'.red)
@@ -26,13 +26,17 @@ try {
   process.exit(1)
 }
 
+var repo
+
 Repository.open(process.cwd())
 
 const found = new Promise(function (resolve, reject) {
-  Repository.open(process.cwd()).then(function (repo) {
+  Repository.open(process.cwd()).then(function (repoRef) {
+
+    repo = repoRef
 
     Branch.lookup(repo, 'gh-pages', 1).then(function (reference) {
-      resolve(repo, reference)
+      resolve()
     }).catch(function (reason) {
       reject(reason.toString())
     })
@@ -48,7 +52,7 @@ const found = new Promise(function (resolve, reject) {
   })
 })
 
-found.then(function (repo, branch) {
+found.then(function () {
 
   const walker = walk.walk(process.cwd() + '/dist', {
     filters: ['.git']
@@ -96,6 +100,18 @@ found.then(function (repo, branch) {
       }
     }
 
+    const defaultSig = git.Signature.default(repo)
+
+    try {
+      exec('git add -A *')
+      exec('git commit -am "Deployed"')
+      exec('git push origin gh-pages')
+      exec('git checkout master')
+    } catch (err) {
+      throw err
+    }
+
+    console.log('Deployed!'.green)
     process.exit(1)
   })
 
