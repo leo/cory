@@ -22,7 +22,8 @@
     "cory-serve": "bin/serve.js",
     "cory-build": "bin/build.js",
     "cory-init": "bin/init.js",
-    "cory-clean": "bin/clean.js"
+    "cory-clean": "bin/clean.js",
+    "cory-deploy": "bin/deploy.js"
   },
   "greenkeeper": {
     "emails": false
@@ -44,6 +45,7 @@
     "mime": "^1.3.4",
     "mkdirp": "^0.5.1",
     "node-sass": "^3.4.2",
+    "nodegit": "^0.9.0",
     "open": "0.0.5",
     "walk": "^2.3.9"
   }
