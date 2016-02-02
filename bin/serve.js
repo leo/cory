@@ -82,7 +82,7 @@ if (inst.watch) {
 
   browserSync.init({
     server: {
-      baseDir: 'dist'
+      baseDir: path.parse(config.outputDir).base
     },
     ui: false,
     port: config.port,
