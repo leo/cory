@@ -37,7 +37,7 @@ if (!etc.exists(config.outputDir)) {
   }
 }
 
-function respond(status, message, type, encoding) {
+function respond (status, message, type, encoding) {
   var request = this
 
   request.writeHead(status, {'Content-Type': type || 'text/plain'})
@@ -47,8 +47,7 @@ function respond(status, message, type, encoding) {
 
 http.ServerResponse.prototype.send = respond
 
-const server = http.createServer(function (request, response) {
-
+function middleware (request, response) {
   const uri = url.parse(request.url).pathname
   var filename = path.join(config.outputDir, uri)
 
@@ -76,41 +75,40 @@ const server = http.createServer(function (request, response) {
 
     response.send(200, file, type, encoding)
   })
+}
 
-})
+if (inst.watch) {
+  const browserSync = require('browser-sync').create()
 
-const subPort = parseInt(config.port) - 1
+  browserSync.init({
+    server: {
+      baseDir: 'dist'
+    },
+    ui: false,
+    port: config.port,
+    notify: false,
+    logPrefix: 'cory',
+    watchOptions: {
+      ignored: /dist|.DS_Store|.git/
+    },
+    files: [{
+      match: [process.cwd()],
+      fn: require('../lib/watch')
+    }]
+  })
 
-server.listen(inst.watch ? subPort : config.port, function () {
-  const port = this.address().port
-  const url = 'http://localhost:' + port
+  process.on('SIGINT', () => {
+    browserSync.exit()
+    process.exit(0)
+  })
+} else {
+  const server = http.createServer(middleware)
 
-  if (inst.watch) {
-    const browserSync = require('browser-sync').create()
+  server.listen(config.port, function () {
+    const port = this.address().port
+    const url = 'http://localhost:' + port
 
-    browserSync.init({
-      proxy: 'http://localhost:' + subPort,
-      ui: false,
-      port: config.port,
-      notify: false,
-      logPrefix: 'cory',
-      watchOptions: {
-        ignored: /dist|.DS_Store|.git/
-      },
-      files: [{
-        match: [process.cwd()],
-        fn: require('../lib/watch')
-      }]
-    })
-
-    require('../lib/watch')(browserSync)
-
-    process.on('SIGINT', () => {
-      browserSync.exit()
-      process.exit(0)
-    })
-  } else {
     console.log('Your site is running at ' + url)
     open(url)
-  }
-})
+  })
+}
