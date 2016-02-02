@@ -95,7 +95,7 @@ server.listen(inst.watch ? subPort : config.port, function () {
       notify: false,
       logPrefix: 'cory',
       watchOptions: {
-        ignored: /dist|.DS_Store/
+        ignored: /dist|.DS_Store|.git/
       },
       files: [{
         match: [process.cwd()],

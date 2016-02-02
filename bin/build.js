@@ -55,7 +55,7 @@ walker.on('end', function () {
 
   if (inst.watch) {
     const watcher = chokidar.watch(process.cwd(), {
-      ignored: /dist|.DS_Store/
+      ignored: /dist|.DS_Store|.git/
     })
 
     console.log('Watching for changes...')
