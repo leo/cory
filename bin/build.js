@@ -10,6 +10,7 @@ const compile = require('../lib/compiler').run
 
 const inst = require('commander')
 const colors = require('colors')
+const chokidar = require('chokidar')
 
 inst
   .option('-w, --watch', 'Rebuild site if files change')
@@ -52,6 +53,20 @@ walker.on('end', function () {
   const timerEnd = new Date().getTime()
   console.log(`Built the site in ${timerEnd - timerStart}ms.`.green)
 
-  // Start watching now
-  if (inst.watch) require('../lib/watch')()
+  if (inst.watch) {
+    const watcher = chokidar.watch(process.cwd(), {
+      ignored: /dist|.DS_Store/
+    })
+
+    console.log('Watching for changes...')
+
+    process.on('SIGINT', () => {
+      watcher.close()
+      process.exit(0)
+    })
+
+    watcher.on('change', (file) => {
+      require('../lib/watch')('change', file)
+    })
+  }
 })

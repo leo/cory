@@ -93,7 +93,14 @@ server.listen(inst.watch ? subPort : config.port, function () {
       ui: false,
       port: config.port,
       notify: false,
-      logPrefix: 'cory'
+      logPrefix: 'cory',
+      watchOptions: {
+        ignored: /dist|.DS_Store/
+      },
+      files: [{
+        match: [process.cwd()],
+        fn: require('../lib/watch')
+      }]
     })
 
     require('../lib/watch')(browserSync)
