@@ -49,7 +49,7 @@ Yeeha! :horse: Now you're able to use the `cory` command everywhere!
 
 | Name                | Description |
 | ------------------- | ----------- |
-| serve               | If the current directory contains a site, it will serve it on the port 4000. |
+| serve               | If the current directory contains a site, it will serve it on the specified in `port`. See [config](#configuration) for default value. |
 | build               | Builds your site in the `outputDir` directory. |
 | init                | Creates a new site and places it in the current folder. The app won't allow you to use this command within the `template` directory of this project, since it would overwrite all files. |
 | clean               | Remove the generated output and all temporary files completely. |
