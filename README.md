@@ -45,7 +45,7 @@ npm link
 
 Yeeha! :horse: Now you're able to use the `cory` command everywhere!
 
-## Commands
+## CLI
 
 | Name                | Description |
 | ------------------- | ----------- |
@@ -56,7 +56,7 @@ Yeeha! :horse: Now you're able to use the `cory` command everywhere!
 | deploy              | [Deploys](https://github.com/leo/cory/wiki/Deployment) your site to GitHub Pages. If `package.json` has a "deploy" script, that will be run instead. |
 | help&nbsp;[command] | List options for the specified command. |
 
-## Options
+## CLI options
 
 | Usage                     | Description |
 | ------------------------- | ----------- |
