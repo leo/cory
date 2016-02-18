@@ -1,6 +1,6 @@
 # cory
 
-[![Join the chat at https://gitter.im/leo/cory](https://badges.gitter.im/leo/cory.svg)](https://gitter.im/leo/cory?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/leo/cory](https://badges.gitter.im/leo/cory.svg)](https://gitter.im/leo/cory?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![license](https://img.shields.io/npm/l/cory.svg)](https://github.com/leo/cory/blob/master/LICENSE.md)
 
 Ever wanted to create a static site while taking advantage of all the amazing things that are available within the JavaScript universe? Then you're at the right place!
 
@@ -65,7 +65,7 @@ Yeeha! :horse: Now you're able to use the `cory` command everywhere!
 | -p, --port &#60;port&#62; | The port on which your site will be available. |
 | -w, --watch               | Rebuild site if files change (can be used with `build` or `serve`) |
 
-## Configuration
+## Config
 
 There are a few properties that can be changed by simply adding them to a `config.json` file within your project. The JSON object below shows all available options and their default value:
 
