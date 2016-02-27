@@ -40,7 +40,7 @@
   "homepage": "https://github.com/leo/cory#readme",
   "dependencies": {
     "browser-sync": "^2.11.1",
-    "chokidar": "^1.4.2",
+    "chokidar": "^1.4.3",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
     "front-matter": "^2.0.6",
