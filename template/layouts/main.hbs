@@ -2,6 +2,10 @@
 <html>
 
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
     {{#if page.title}}
       <title>{{page.title}}</title>
     {{else}}
@@ -9,11 +13,30 @@
     {{/if}}
 
     <link rel="stylesheet" href="/assets/styles/site.css">
+
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,400italic,300italic,300,700,700italic" rel="stylesheet">
   </head>
 
   <body>
-    {{{body}}}
-    <script type="text/javascript" src="/assets/scripts/main.js"></script>
+
+    <header id="menu">
+      <a href="/" class="logo">{{title}}</a>
+      <hr>
+      <nav>
+        <a href="/" class="active">Home</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+
+    <main id="content">
+      {{{body}}}
+    </main>
+
+    <footer id="footer">
+      <hr>
+      <p>Copyright 2016 by {{title}}</p>
+    </footer>
+
   </body>
 
 </html>
