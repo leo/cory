@@ -49,7 +49,7 @@
     "mime": "^1.3.4",
     "mkdirp": "^0.5.1",
     "node-sass": "^3.4.2",
-    "nodegit": "^0.11.6",
+    "nodegit": "^0.11.7",
     "open": "0.0.5",
     "uglify-js": "^2.6.2",
     "update-notifier": "^0.6.1",
