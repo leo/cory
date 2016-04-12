@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-const colors = require('colors')
-const git = require('nodegit')
-const etc = require('../lib/etc')
-const exec = require('child_process').execSync;
-const walk = require('walk')
-const makeDir = require('mkdirp').sync
+import colors from 'colors'
+import git from 'nodegit'
+import etc from '../lib/etc'
+import { execSync as exec } from 'child_process'
+import walk from 'walk'
+import { sync as makeDir } from 'mkdirp'
 
-const path = require('path')
-const fs = require('fs')
+import path from 'path'
+import fs from 'fs'
 
 const Branch = git.Branch
 const Repository = git.Repository
@@ -34,7 +34,7 @@ if (pkg.scripts && pkg.scripts.deploy) {
   process.exit(1)
 }
 
-var repo
+let repo
 
 Repository.open(process.cwd())
 
@@ -73,7 +73,7 @@ found.then(function () {
     filters: ['.git']
   })
 
-  var output = []
+  let output = []
 
   walker.on('file', function (root, fileStat, next) {
     if (fileStat.name === '.DS_Store') {

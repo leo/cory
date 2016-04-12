@@ -10,6 +10,16 @@
     "type": "git",
     "url": "git+https://github.com/leo/cory.git"
   },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-async-to-generator",
+      "transform-runtime",
+      "syntax-async-functions"
+    ]
+  },
   "keywords": [
     "static",
     "site",

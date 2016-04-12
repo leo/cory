@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 
-const http = require('http')
-const url = require('url')
-const path = require('path')
-const fs = require('fs')
-const exec = require('child_process').execSync
+import http from 'http'
+import url from 'url'
+import path from 'path'
+import fs from 'fs'
+import { execSync as exec } from 'child_process'
 
-const inst = require('commander')
-const open = require('open')
-const mime = require('mime')
-const colors = require('colors')
+import inst from 'commander'
+import open from 'open'
+import mime from 'mime'
+import colors from 'colors'
 
-const etc = require('../lib/etc')
-var config = require('../lib/config')
+import etc from '../lib/etc'
+import config from '../lib/config'
 
 inst
   .option('-p, --port <port>', 'The port on which your site will be available')
@@ -38,7 +38,7 @@ if (!etc.exists(config.outputDir)) {
 }
 
 function respond (status, message, type, encoding) {
-  var request = this
+  let request = this
 
   request.writeHead(status, {'Content-Type': type || 'text/plain'})
   request.write(message || 'Not Found', encoding || 'utf8')
@@ -49,7 +49,7 @@ http.ServerResponse.prototype.send = respond
 
 function middleware (request, response) {
   const uri = url.parse(request.url).pathname
-  var filename = path.join(config.outputDir, uri)
+  let filename = path.join(config.outputDir, uri)
 
   try {
     const stats = fs.statSync(filename)
@@ -68,7 +68,7 @@ function middleware (request, response) {
   const type = mime.lookup(filename)
   const encoding = type !== 'text/html' && 'binary'
 
-  fs.readFile(filename, 'binary', function(err, file) {
+  fs.readFile(filename, 'binary', (err, file) => {
     if (err) {
       return response.send(500, err)
     }

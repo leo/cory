@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 
-const path = require('path')
-const fs = require('fs')
-const walk = require('walk')
-const colors = require('colors')
+import path from 'path'
+import fs from 'fs'
+import colors from 'colors'
+import walk from 'walk'
+import { exists } from '../lib/etc'
+import config from '../lib/config'
 
-const template = __dirname + '/../template'
-const config = require('../lib/config')
-const exists = require('../lib/etc').exists
+const template = '../../template'
 
 if (path.basename(process.cwd()) == 'template') {
   console.log('You shouldn\'t run ' + 'init'.gray + ' in here.')
   console.log('Please run it somewhere outside of the project.')
+
   process.exit(0)
 }
 
@@ -19,7 +20,7 @@ const walker = walk.walk(template, {
   filters: [path.parse(config.outputDir).base]
 })
 
-walker.on('file', function (root, fileStats, next) {
+walker.on('file', (root, fileStats, next) => {
   const way = root + '/' + fileStats.name
   const subPath = root.replace(template, '')
   const folder = process.cwd() + subPath
@@ -39,6 +40,4 @@ walker.on('file', function (root, fileStats, next) {
   next()
 })
 
-walker.on('end', function() {
-  console.log('Generated new site in ' + process.cwd().gray)
-})
+walker.on('end', () => console.log('Generated new site in ' + process.cwd().gray))

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-const app = require('commander')
-const updateNotifier = require('update-notifier')
-const pkg = require(__dirname + '/package.json')
+import app from 'commander'
+import updateNotifier from 'update-notifier'
+import pkg from '../../package.json'
 
 updateNotifier({ pkg }).notify()
 
 app
-  .version(require(__dirname + '/package.json').version)
+  .version(pkg.version)
 
 app
   .command('serve', 'Serve your site locally')

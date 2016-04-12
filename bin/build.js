@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 
-const fs = require('fs')
-const path = require('path')
-const walk = require('walk')
+import fs from 'fs'
+import path from 'path'
+import inst from 'commander'
+import colors from 'colors'
+import chokidar from 'chokidar'
+import walk from 'walk'
 
-const config = require('../lib/config')
-const exists = require('../lib/etc').isSite
-const compile = require('../lib/compiler').run
-
-const inst = require('commander')
-const colors = require('colors')
-const chokidar = require('chokidar')
+import config from '../lib/config'
+import { isSite as exists } from '../lib/etc'
+import { run as compile } from '../lib/compiler'
 
 inst
   .option('-w, --watch', 'Rebuild site if files change')
@@ -49,7 +48,7 @@ walker.on('file', function (root, fileStat, next) {
   })
 })
 
-walker.on('end', function () {
+walker.on('end', () => {
   const timerEnd = new Date().getTime()
   console.log(`Built the site in ${timerEnd - timerStart}ms.`.green)
 
