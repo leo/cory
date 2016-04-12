@@ -7,9 +7,7 @@
   },
   "files": [
     "template",
-    "index.js",
-    "lib",
-    "bin"
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -24,12 +22,12 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "cory": "index.js",
-    "cory-serve": "bin/serve.js",
-    "cory-build": "bin/build.js",
-    "cory-init": "bin/init.js",
-    "cory-clean": "bin/clean.js",
-    "cory-deploy": "bin/deploy.js"
+    "cory": "dist/bin/index",
+    "cory-serve": "dist/bin/serve",
+    "cory-build": "dist/bin/build",
+    "cory-init": "dist/bin/init",
+    "cory-clean": "dist/bin/clean",
+    "cory-deploy": "dist/bin/deploy"
   },
   "greenkeeper": {
     "emails": false
@@ -54,5 +52,15 @@
     "uglify-js": "^2.6.2",
     "update-notifier": "^0.6.3",
     "walk": "^2.3.9"
+  },
+  "devDependencies": {
+    "babel-plugin-syntax-async-functions": "^6.5.0",
+    "babel-plugin-transform-async-to-generator": "^6.7.4",
+    "babel-plugin-transform-runtime": "^6.7.5",
+    "babel-runtime": "^6.6.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-cached": "^1.1.0",
+    "gulp-ext": "^1.0.0"
   }
 }
