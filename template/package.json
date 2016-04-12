@@ -7,5 +7,11 @@
     "start": "cory serve -w"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "broccoli-babel-transpiler": "^5.5.0",
+    "broccoli-funnel": "^1.0.1",
+    "broccoli-merge-trees": "^1.1.1",
+    "broccoli-sass": "^0.7.0"
+  }
 }
