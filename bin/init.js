@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 import path from 'path'
-import fs from 'fs'
+import fs from 'fs-extra'
 import colors from 'colors'
 import walk from 'walk'
 import { exists } from '../lib/etc'
 import config from '../lib/config'
 
-const template = '../../template'
+const template = path.resolve(__dirname + '/../../template')
 
 if (path.basename(process.cwd()) == 'template') {
   console.log('You shouldn\'t run ' + 'init'.gray + ' in here.')
@@ -17,7 +17,10 @@ if (path.basename(process.cwd()) == 'template') {
 }
 
 const walker = walk.walk(template, {
-  filters: [path.parse(config.outputDir).base]
+  filters: [
+    path.parse(config.outputDir).base,
+    'node_modules'
+  ]
 })
 
 walker.on('file', (root, fileStats, next) => {
@@ -26,7 +29,7 @@ walker.on('file', (root, fileStats, next) => {
   const folder = process.cwd() + subPath
 
   if (!exists(folder)) {
-    fs.mkdirSync(folder)
+    fs.ensureDirSync(folder)
   }
 
   const targetPath = process.cwd() +  '/' + subPath + '/' + fileStats.name
