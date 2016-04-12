@@ -1,12 +1,12 @@
 {
   "name": "base",
-  "version": "0.1.0",
-  "description": "A boilerplate",
+  "version": "1.0.0",
+  "description": "A new site created with cory",
   "main": "index.js",
   "scripts": {
     "start": "cory serve -w"
   },
-  "author": "",
+  "author": "Your name",
   "license": "MIT",
   "devDependencies": {
     "broccoli-babel-transpiler": "^5.5.0",
