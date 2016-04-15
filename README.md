@@ -37,7 +37,7 @@ git clone https://github.com/leo/cory.git
 cd cory
 ```
 
-Link the app to the global module directory
+Link it app to the global module directory
 
 ```bash
 npm link
