@@ -43,7 +43,7 @@ Link it app to the global module directory
 npm link
 ```
 
-Yeeha! :horse: Now you're able to use the `cory` command everywhere!
+Yeeha! :horse: Now you can use the `gulp` command within the repository to transpile the its sourcefiles and watch for changes. While the command is running, you're able to use the `cory` command everywhere!
 
 ## CLI
 
