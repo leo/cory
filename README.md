@@ -74,6 +74,7 @@ There are a few properties that can be changed by simply adding them to a `confi
   "port": 4000, // See option "--port" (CLI option will overwrite this)
   "outputDir": "dist", // Path of the directory that will contain the generated site
   "sourceMaps": true, // Enable/disable the generation of sourcemaps for assets
-  "defaultLayout": "main" // The default template into which all pages will be wrapped
+  "defaultLayout": "main", // The default template into which all pages will be wrapped
+  "assetDir": "assets" // Default name of the folder that contains the assets
 }
 ```
