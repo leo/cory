@@ -30,4 +30,4 @@ gulp.task('watch', () => {
 })
 
 gulp.task('prepare', ['bin', 'lib'])
-gulp.task('default', ['watch', 'bin', 'lib'])
+gulp.task('default', ['watch', 'prepare'])
