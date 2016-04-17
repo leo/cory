@@ -29,5 +29,5 @@ gulp.task('watch', () => {
   gulp.watch(paths.bin, ['bin'])
 })
 
-gulp.task('prepare', ['bin', 'lib'])
-gulp.task('default', ['watch', 'prepare'])
+gulp.task('compile', ['bin', 'lib'])
+gulp.task('default', ['watch', 'compile'])

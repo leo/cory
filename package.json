@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "prepublish": "gulp prepare"
+    "prepublish": "gulp compile"
   },
   "repository": {
     "type": "git",
