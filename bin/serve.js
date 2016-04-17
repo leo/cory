@@ -11,7 +11,7 @@ import open from 'open'
 import mime from 'mime'
 import colors from 'colors'
 
-import etc from '../lib/etc'
+import { isSite, exists } from '../lib/etc'
 import config from '../lib/config'
 
 inst
@@ -23,14 +23,14 @@ if (inst.port) {
   config.port = inst.port
 }
 
-if (!etc.isSite()) {
+if (!isSite()) {
   console.error('No site in here!'.red)
   process.exit(1)
 }
 
-if (!etc.exists(config.outputDir)) {
+if (!exists(config.outputDir)) {
   try {
-    exec('cory build', {stdio: [0, 1]})
+    exec('cory build', { stdio: [0, 1] })
   } catch (err) {
     console.error(err)
     process.exit(1)
@@ -50,9 +50,10 @@ http.ServerResponse.prototype.send = respond
 function middleware (request, response) {
   const uri = url.parse(request.url).pathname
   let filename = path.join(config.outputDir, uri)
+  let stats = false
 
   try {
-    const stats = fs.statSync(filename)
+    stats = fs.statSync(filename)
   } catch (err) {
     return response.send(404)
   }
