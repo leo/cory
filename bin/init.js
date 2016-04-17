@@ -4,6 +4,8 @@ import path from 'path'
 import fs from 'fs-extra'
 import colors from 'colors'
 import walk from 'walk'
+import ora from 'ora'
+import { exec } from 'child_process'
 import { exists } from '../lib/etc'
 import config from '../lib/config'
 
@@ -22,6 +24,10 @@ const walker = walk.walk(template, {
     'node_modules'
   ]
 })
+
+function done () {
+  console.log('Generated new site in ' + process.cwd().gray)
+}
 
 walker.on('file', (root, fileStats, next) => {
   const way = root + '/' + fileStats.name
@@ -43,4 +49,20 @@ walker.on('file', (root, fileStats, next) => {
   next()
 })
 
-walker.on('end', () => console.log('Generated new site in ' + process.cwd().gray))
+walker.on('end', () => {
+  const spinner = ora('Installing missing packages via npm'.green)
+
+  spinner.color = 'green'
+  spinner.start()
+
+  exec('npm install', function (err, stdout, stderr) {
+    if (err) throw err
+
+    if (stdout && stdout.indexOf('example@1.0.0') > -1) {
+      spinner.stop()
+      done()
+    }
+
+    if (stderr) console.error(stderr)
+  })
+})
