@@ -8,7 +8,7 @@ import walk from 'walk'
 import { sync as makeDir } from 'mkdirp'
 
 import path from 'path'
-import fs from 'fs'
+import fs from 'fs-extra'
 
 const Branch = git.Branch
 const Repository = git.Repository

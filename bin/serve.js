@@ -3,7 +3,7 @@
 import http from 'http'
 import url from 'url'
 import path from 'path'
-import fs from 'fs'
+import fs from 'fs-extra'
 import { execSync as exec } from 'child_process'
 
 import inst from 'commander'

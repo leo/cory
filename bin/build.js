@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import inst from 'commander'
 import colors from 'colors'
