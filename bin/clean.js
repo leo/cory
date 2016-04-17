@@ -3,7 +3,7 @@
 import fs from 'fs-extra'
 import colors from 'colors'
 
-import { exists, isSite, deleteDir } from '../lib/etc'
+import { exists, isSite } from '../lib/etc'
 import config from '../lib/config'
 
 if (!isSite()) {

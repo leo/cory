@@ -38,7 +38,9 @@ const walker = walk.walk(process.cwd(), {
 walker.on('file', function (root, fileStat, next) {
   const ignored = [
     'package.json',
-    'config.json'
+    'config.json',
+    'brocfile.js',
+    'README.md'
   ]
 
   if (ignored.indexOf(fileStat.name) > -1 || fileStat.name.charAt(0) == '.') {
