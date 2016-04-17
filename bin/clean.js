@@ -3,7 +3,7 @@
 import fs from 'fs-extra'
 import colors from 'colors'
 
-import { isSite, exists } from '../lib/etc'
+import { exists, isSite, deleteDir } from '../lib/etc'
 import config from '../lib/config'
 
 if (!isSite()) {
@@ -18,4 +18,7 @@ if (!exists(config.outputDir)) {
   process.exit(1)
 }
 
-etc.deleteDir(config.outputDir, false, () => console.log('Everything cleaned up!'.green))
+fs.remove(config.outputDir, err => {
+  if (err) throw err
+  console.log('Everything cleaned up!'.green)
+})
