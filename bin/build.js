@@ -9,7 +9,7 @@ import walk from 'walk'
 
 import config from '../lib/config'
 import { isSite as exists } from '../lib/etc'
-import { run as compile } from '../lib/compiler'
+import { compile } from '../lib/compiler'
 
 inst
   .option('-w, --watch', 'Rebuild site if files change')
@@ -23,7 +23,13 @@ if (!exists()) {
 const timerStart = new Date().getTime()
 
 const walker = walk.walk(process.cwd(), {
-  filters: ['layouts', 'dist', '.git']
+  filters: [
+    'layouts',
+    'dist',
+    '.git',
+    'node_modules',
+    path.parse(config.assetDir).base
+  ]
 })
 
 walker.on('file', function (root, fileStat, next) {
@@ -42,6 +48,8 @@ walker.on('file', function (root, fileStat, next) {
     this.full = path.resolve(root, fileStat.name)
     this.relative = this.full.replace(process.cwd(), '').replace('scss', 'css')
   }
+
+  console.log(root)
 
   compile(paths, function () {
     next()
