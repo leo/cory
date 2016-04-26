@@ -50,7 +50,7 @@
     "babel-runtime": "^6.6.1",
     "broccoli": "^0.16.9",
     "broccoli-sane-watcher": "^1.1.4",
-    "browser-sync": "^2.12.4",
+    "browser-sync": "^2.12.5",
     "chokidar": "^1.4.3",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
