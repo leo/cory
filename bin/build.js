@@ -2,7 +2,7 @@
 
 import fs from 'fs-extra'
 import path from 'path'
-import inst from 'commander'
+import args from 'args'
 import colors from 'colors'
 import chokidar from 'chokidar'
 import walk from 'walk'
@@ -14,8 +14,8 @@ import config from '../lib/config'
 import { isSite as exists } from '../lib/etc'
 import { compile } from '../lib/compiler'
 
-inst
-  .option('-w, --watch', 'Rebuild site if files change')
+args
+  .option('watch', 'Rebuild site if files change')
   .parse(process.argv)
 
 if (!exists()) {
@@ -83,13 +83,13 @@ walker.on('end', () => {
         console.log('Finished building.'.green)
       }
 
-      if (!inst.watch) {
+      if (!args.watch) {
         builder.cleanup().catch(err => console.error(err))
       }
     })
   }).catch(err => console.error(err))
 
-  if (inst.watch) {
+  if (args.watch) {
     const watcher = chokidar.watch(process.cwd(), {
       ignored: /dist|.DS_Store|.git/
     })

@@ -6,7 +6,7 @@ import path from 'path'
 import fs from 'fs-extra'
 import { execSync as exec } from 'child_process'
 
-import inst from 'commander'
+import args from 'args'
 import open from 'open'
 import mime from 'mime'
 import colors from 'colors'
@@ -14,14 +14,12 @@ import colors from 'colors'
 import { isSite, exists } from '../lib/etc'
 import config from '../lib/config'
 
-inst
-  .option('-p, --port <port>', 'The port on which your site will be available')
-  .option('-w, --watch', 'Rebuild site if files change')
+args
+  .option('port', 'The port on which your site will be available', parseInt, config.port)
+  .option('watch', 'Rebuild site if files change')
   .parse(process.argv)
 
-if (inst.port) {
-  config.port = inst.port
-}
+config.port = args.port
 
 if (!isSite()) {
   console.error('No site in here!'.red)
@@ -78,7 +76,7 @@ function middleware (request, response) {
   })
 }
 
-if (inst.watch) {
+if (args.watch) {
   const browserSync = require('browser-sync').create()
 
   browserSync.init({
