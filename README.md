@@ -61,7 +61,7 @@ Yeeha! :horse: Now you can use the `gulp` command within the repository to trans
 | Usage                     | Description |
 | ------------------------- | ----------- |
 | -h, --help                | Output all commands and options. |
-| -V, --version             | Output the version of the cory instance on your device. |
+| -v, --version             | Output the version of the cory instance on your device. |
 | -p, --port &#60;port&#62; | The port on which your site will be available. |
 | -w, --watch               | Rebuild site if files change (can be used with `build` or `serve`) |
 
