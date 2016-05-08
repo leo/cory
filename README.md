@@ -1,6 +1,4 @@
-# cory
-
-[![Join the chat at https://gitter.im/leo/cory](https://badges.gitter.im/leo/cory.svg)](https://gitter.im/leo/cory?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![license](https://img.shields.io/npm/l/cory.svg)](https://github.com/leo/cory/blob/master/LICENSE.md)
+# cory [![Gitter](https://badges.gitter.im/leo/cory.svg)](https://gitter.im/leo/cory?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Ever wanted to create a static site while taking advantage of all the amazing things that are available within the JavaScript universe? Then you're at the right place!
 
