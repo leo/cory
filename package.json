@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/leo/cory#readme",
   "dependencies": {
-    "args": "^1.0.0",
+    "args": "^1.0.1",
     "babel-runtime": "^6.6.1",
     "broccoli": "^0.16.9",
     "broccoli-sane-watcher": "^1.1.4",
