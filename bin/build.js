@@ -14,9 +14,8 @@ import config from '../lib/config'
 import { isSite as exists } from '../lib/etc'
 import { compile } from '../lib/compiler'
 
-args
-  .option('watch', 'Rebuild site if files change')
-  .parse(process.argv)
+args.option('watch', 'Rebuild site if files change')
+const options = args.parse(process.argv)
 
 if (!exists()) {
   console.error('No site in here!'.red)
@@ -83,13 +82,13 @@ walker.on('end', () => {
         console.log('Finished building.'.green)
       }
 
-      if (!args.watch) {
+      if (!options.watch) {
         builder.cleanup().catch(err => console.error(err))
       }
     })
   }).catch(err => console.error(err))
 
-  if (args.watch) {
+  if (options.watch) {
     const watcher = chokidar.watch(process.cwd(), {
       ignored: /dist|.DS_Store|.git/
     })

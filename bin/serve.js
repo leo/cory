@@ -15,11 +15,11 @@ import { isSite, exists } from '../lib/etc'
 import config from '../lib/config'
 
 args
-  .option('port', 'The port on which your site will be available', parseInt, config.port)
+  .option('port', 'The port on which your site will be available', config.port)
   .option('watch', 'Rebuild site if files change')
-  .parse(process.argv)
 
-config.port = args.port
+const options = args.parse(process.argv)
+config.port = options.port
 
 if (!isSite()) {
   console.error('No site in here!'.red)
@@ -76,7 +76,7 @@ function middleware (request, response) {
   })
 }
 
-if (args.watch) {
+if (options.watch) {
   const browserSync = require('browser-sync').create()
 
   browserSync.init({
