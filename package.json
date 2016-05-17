@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/leo/cory#readme",
   "dependencies": {
-    "args": "^1.0.1",
+    "args": "^1.0.2",
     "broccoli": "^0.16.9",
     "broccoli-sane-watcher": "^1.1.4",
     "browser-sync": "^2.12.7",
