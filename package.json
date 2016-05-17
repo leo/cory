@@ -10,10 +10,7 @@
     "start": "gulp",
     "prepublish": "gulp compile"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/leo/cory.git"
-  },
+  "repository": "leo/cory",
   "babel": {
     "plugins": [
       "transform-es2015-modules-commonjs"
