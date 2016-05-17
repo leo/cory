@@ -30,4 +30,4 @@ gulp.task('watch', () => {
 })
 
 gulp.task('transpile', ['bin', 'lib'])
-gulp.task('default', ['watch', 'compile'])
+gulp.task('default', ['watch', 'transpile'])
