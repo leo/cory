@@ -8,7 +8,14 @@
   ],
   "scripts": {
     "start": "gulp",
-    "prepublish": "gulp compile"
+    "prepublish": "gulp compile",
+    "pretest": "gulp compile",
+    "test": "ava"
+  },
+  "ava": {
+    "files": [
+      "test/*.js"
+    ]
   },
   "repository": "leo/cory",
   "babel": {
