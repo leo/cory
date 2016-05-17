@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "start": "gulp",
-    "prepublish": "gulp compile",
-    "pretest": "gulp compile",
+    "prepublish": "gulp transpile",
+    "pretest": "gulp transpile",
     "test": "ava"
   },
   "ava": {
