@@ -43,7 +43,7 @@
     "args": "^1.0.2",
     "broccoli": "^0.16.9",
     "broccoli-sane-watcher": "^1.1.4",
-    "browser-sync": "^2.12.7",
+    "browser-sync": "^2.12.8",
     "chokidar": "^1.5.0",
     "colors": "^1.1.2",
     "front-matter": "^2.0.7",
