@@ -36,7 +36,10 @@
     "cory-deploy": "dist/bin/deploy"
   },
   "greenkeeper": {
-    "emails": false
+    "emails": false,
+    "ignore": [
+      "babel-preset-es2015-node"
+    ]
   },
   "bugs": {
     "url": "https://github.com/leo/cory/issues"
