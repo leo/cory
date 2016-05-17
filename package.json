@@ -63,6 +63,7 @@
     "walk": "^2.3.9"
   },
   "devDependencies": {
+    "ava": "^0.14.0",
     "babel-preset-es2015-node": "^4.0.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
