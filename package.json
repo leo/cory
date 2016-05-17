@@ -19,7 +19,10 @@
   "keywords": [
     "static",
     "site",
-    "generator"
+    "generator",
+    "jekyll",
+    "content",
+    "website"
   ],
   "author": "Leonard Lamprecht <mindrun@icloud.com> (http://leo.im)",
   "license": "MIT",
