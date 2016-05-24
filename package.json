@@ -10,7 +10,7 @@
     "start": "gulp",
     "prepublish": "gulp transpile",
     "pretest": "gulp transpile",
-    "test": "ava"
+    "test": "ava && eslint bin/** lib/**"
   },
   "ava": {
     "files": [
@@ -31,6 +31,9 @@
     "content",
     "website"
   ],
+  "eslintConfig": {
+    "extends": "default"
+  },
   "author": "Leonard Lamprecht <mindrun@icloud.com> (http://leo.im)",
   "license": "MIT",
   "preferGlobal": true,
@@ -75,6 +78,8 @@
   "devDependencies": {
     "ava": "^0.14.0",
     "babel-preset-es2015-node": "^4.0.2",
+    "eslint": "^2.10.2",
+    "eslint-config-default": "^0.1.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-cached": "^1.1.0",

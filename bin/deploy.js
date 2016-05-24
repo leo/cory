@@ -97,7 +97,7 @@ found.then(function () {
     })
   })
 
-  walker.on('end', function() {
+  walker.on('end', function () {
     try {
       exec('git checkout gh-pages')
     } catch (err) {
