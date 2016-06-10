@@ -76,7 +76,7 @@
     "walk": "^2.3.9"
   },
   "devDependencies": {
-    "ava": "^0.14.0",
+    "ava": "^0.15.0",
     "babel-preset-es2015-node": "^4.0.2",
     "eslint": "^2.10.2",
     "eslint-config-default": "^0.1.0",
