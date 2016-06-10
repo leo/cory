@@ -34,7 +34,7 @@
   "eslintConfig": {
     "extends": "default"
   },
-  "author": "Leonard Lamprecht <mindrun@icloud.com> (http://leo.im)",
+  "author": "leo",
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
