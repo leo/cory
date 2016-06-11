@@ -12,6 +12,11 @@
     "pretest": "gulp transpile",
     "test": "ava && eslint bin/** lib/**"
   },
+  "author": {
+    "name": "Leo Lamprecht",
+    "email": "mindrun@icloud.com",
+    "url": "http://leo.im"
+  },
   "ava": {
     "files": [
       "test/*.js"
@@ -33,11 +38,6 @@
   ],
   "eslintConfig": {
     "extends": "default"
-  },
-  "author": {
-    "name": "Leo Lamprecht",
-    "email": "mindrun@icloud.com",
-    "url": "http://leo.im"
   },
   "license": "MIT",
   "preferGlobal": true,
