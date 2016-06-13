@@ -46,14 +46,12 @@
     "cory-serve": "dist/bin/serve",
     "cory-build": "dist/bin/build",
     "cory-init": "dist/bin/init",
-    "cory-clean": "dist/bin/clean",
-    "cory-deploy": "dist/bin/deploy"
+    "cory-clean": "dist/bin/clean"
   },
   "greenkeeper": {
     "emails": false,
     "ignore": [
-      "babel-preset-es2015-node",
-      "nodegit"
+      "babel-preset-es2015-node"
     ]
   },
   "bugs": {
@@ -74,7 +72,6 @@
     "mime": "^1.3.4",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
-    "nodegit": "^0.12.2",
     "open": "0.0.5",
     "ora": "^0.2.1",
     "update-notifier": "^1.0.0",

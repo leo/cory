@@ -51,7 +51,6 @@ Yeeha! :horse: Now you can use the `gulp` command within the repository to trans
 | build               | Builds your site in the `outputDir` directory. |
 | init                | Creates a new site and places it in the current folder. The app won't allow you to use this command within the `template` directory of this project, since it would overwrite all files. |
 | clean               | Remove the generated output and all temporary files completely. |
-| deploy              | [Deploys](https://github.com/leo/cory/wiki/Deployment) your site to GitHub Pages. If `package.json` has a "deploy" script, that will be run instead. |
 | help                | Output usage information. |
 
 ## CLI options

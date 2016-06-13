@@ -11,6 +11,5 @@ args
   .command('build', 'Buily your site')
   .command('init', 'Generate a new site in the current directory')
   .command('clean', 'Remove the generated output')
-  .command('deploy', 'Deploy your site to GitHub Pages')
 
 args.parse(process.argv)
