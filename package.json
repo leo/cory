@@ -76,7 +76,7 @@
     "nodegit": "^0.13.0",
     "open": "0.0.5",
     "ora": "^0.2.1",
-    "update-notifier": "^0.7.0",
+    "update-notifier": "^1.0.0",
     "walk": "^2.3.9"
   },
   "devDependencies": {
