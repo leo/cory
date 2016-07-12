@@ -30,7 +30,7 @@ const walker = walk.walk(process.cwd(), {
     /\b(dist)\b/,
     /\b(tmp)\b/,
     /\b(node_modules)\b/,
-    new RegExp('\b' + path.parse(config.assetDir).base + '\b', 'g')
+    path.parse(config.assetDir).base
   ]
 })
 
