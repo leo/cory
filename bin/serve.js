@@ -110,4 +110,9 @@ if (options.watch) {
     console.log('Your site is running at ' + url)
     open(url)
   })
+
+  process.on('SIGINT', () => {
+    server.close()
+    process.exit()
+  })
 }
