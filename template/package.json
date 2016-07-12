@@ -14,7 +14,9 @@
     "broccoli-babel-transpiler": "^5.5.0",
     "broccoli-funnel": "^1.0.1",
     "broccoli-merge-trees": "^1.1.1",
-    "broccoli-sass": "^0.7.0",
+    "broccoli-sass": "^0.7.0"
+  },
+  "dependencies": {
     "cory": "^2.0.0"
   }
 }
