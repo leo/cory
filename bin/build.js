@@ -26,11 +26,11 @@ const timerStart = new Date().getTime()
 
 const walker = walk.walk(process.cwd(), {
   filters: [
-    'layouts',
-    'dist',
-    '.git',
-    'node_modules',
-    path.parse(config.assetDir).base
+    /layouts/,
+    /dist/,
+    /\.git/,
+    /node_modules/,
+    new RegExp(path.parse(config.assetDir).base, 'g')
   ]
 })
 
@@ -41,6 +41,8 @@ walker.on('file', function (root, fileStat, next) {
     'brocfile.js',
     'README.md'
   ]
+
+  console.log(fileStat.name)
 
   if (ignored.indexOf(fileStat.name) > -1 || fileStat.name.charAt(0) == '.') {
     return next()
