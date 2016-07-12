@@ -26,11 +26,11 @@ const timerStart = new Date().getTime()
 
 const walker = walk.walk(process.cwd(), {
   filters: [
-    /layouts/,
-    /dist/,
-    /\.git/,
-    /node_modules/,
-    new RegExp(path.parse(config.assetDir).base, 'g')
+    /\b(layouts)\b/,
+    /\b(dist)\b/,
+    /\b(tmp)\b/,
+    /\b(node_modules)\b/,
+    new RegExp('\b' + path.parse(config.assetDir).base + '\b', 'g')
   ]
 })
 
@@ -42,7 +42,9 @@ walker.on('file', function (root, fileStat, next) {
     'README.md'
   ]
 
-  console.log(fileStat.name)
+  if (root.includes('/.git/') || root.includes('/.git')) {
+    return next()
+  }
 
   if (ignored.indexOf(fileStat.name) > -1 || fileStat.name.charAt(0) == '.') {
     return next()
