@@ -28,7 +28,7 @@ if (!isSite()) {
 
 if (!exists(config.outputDir)) {
   try {
-    exec('cory build', { stdio: [0, 1] })
+    exec('cory build', { stdio: 'inherit' })
   } catch (err) {
     console.error(err)
     process.exit(1)
