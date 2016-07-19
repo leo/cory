@@ -1,4 +1,4 @@
-# cory [![Gitter](https://badges.gitter.im/leo/cory.svg)](https://gitter.im/leo/cory?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/leo/cory.svg?branch=master)](https://travis-ci.org/leo/cory)
+# cory [![Gitter](https://badges.gitter.im/leo/cory.svg)](https://gitter.im/leo/cory?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/leo/cory.svg?branch=master)](https://travis-ci.org/leo/cory) [![Beerpay](https://beerpay.io/leo/cory/badge.svg?style=flat)](https://beerpay.io/leo/cory)
 
 Ever wanted to create a static site while taking advantage of all the amazing things that are available within the JavaScript universe? Then you're at the right place!
 
