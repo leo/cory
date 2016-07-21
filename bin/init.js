@@ -1,10 +1,15 @@
 #!/usr/bin/env node
 
-import path from 'path'
+// Packages
 import fs from 'fs-extra'
 import colors from 'colors'
 import walk from 'walk'
 import ora from 'ora'
+
+// Native
+import path from 'path'
+
+// Ours
 import { exec } from 'child_process'
 import { exists } from '../lib/etc'
 import config from '../lib/config'

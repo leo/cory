@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 
+// Packages
 import args from 'args'
 import updateNotifier from 'update-notifier'
+
+// Ours
 import pkg from '../../package.json'
 
 updateNotifier({ pkg }).notify()
