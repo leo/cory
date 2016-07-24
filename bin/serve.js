@@ -1,20 +1,20 @@
 #!/usr/bin/env node
 
-// Packages
-import fs from 'fs-extra'
-import url from 'url'
+// Native
+import http from 'http'
 import path from 'path'
+import {execSync as exec} from 'child_process'
+
+// Packages
+import url from 'url'
+import fs from 'fs-extra'
 import args from 'args'
 import open from 'open'
 import mime from 'mime'
-import colors from 'colors'
-
-// Native
-import http from 'http'
-import { execSync as exec } from 'child_process'
+import chalk from 'chalk'
 
 // Ours
-import { isSite, exists } from '../lib/etc'
+import {isSite, exists} from '../lib/etc'
 import config from '../lib/config'
 
 args
@@ -25,21 +25,21 @@ const options = args.parse(process.argv)
 config.port = options.port
 
 if (!isSite()) {
-  console.error('No site in here!'.red)
+  console.error(chalk.red('No site in here!'))
   process.exit(1)
 }
 
 if (!exists(config.outputDir)) {
   try {
-    exec('cory build', { stdio: 'inherit' })
+    exec('cory build', {stdio: 'inherit'})
   } catch (err) {
     console.error(err)
     process.exit(1)
   }
 }
 
-function respond (status, message, type, encoding) {
-  let request = this
+function respond(status, message, type, encoding) {
+  const request = this
 
   request.writeHead(status, {'Content-Type': type || 'text/plain'})
   request.write(message || 'Not Found', encoding || 'utf8')
@@ -48,7 +48,7 @@ function respond (status, message, type, encoding) {
 
 http.ServerResponse.prototype.send = respond
 
-function middleware (request, response) {
+function middleware(request, response) {
   const uri = url.parse(request.url).pathname
   let filename = path.join(config.outputDir, uri)
   let stats = false

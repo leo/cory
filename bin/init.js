@@ -1,23 +1,23 @@
 #!/usr/bin/env node
 
+// Native
+import path from 'path'
+import {exec} from 'child_process'
+
 // Packages
 import fs from 'fs-extra'
-import colors from 'colors'
+import chalk from 'chalk'
 import walk from 'walk'
 import ora from 'ora'
 
-// Native
-import path from 'path'
-
 // Ours
-import { exec } from 'child_process'
-import { exists } from '../lib/etc'
+import {exists} from '../lib/etc'
 import config from '../lib/config'
 
-const template = path.resolve(__dirname + '/../../template')
+const template = path.resolve(path.join(__dirname, '/../../template'))
 
-if (path.basename(process.cwd()) == 'template') {
-  console.log('You shouldn\'t run ' + 'init'.gray + ' in here.')
+if (path.basename(process.cwd()) === 'template') {
+  console.log('You shouldn\'t run ' + chalk.gray('init') + ' in here.')
   console.log('Please run it somewhere outside of the project.')
 
   process.exit(0)
@@ -30,7 +30,7 @@ const walker = walk.walk(template, {
   ]
 })
 
-function done () {
+function done() {
   console.log('Generated new site in ' + process.cwd().gray)
 }
 
@@ -43,7 +43,7 @@ walker.on('file', (root, fileStats, next) => {
     fs.ensureDirSync(folder)
   }
 
-  const targetPath = process.cwd() +  '/' + subPath + '/' + fileStats.name
+  const targetPath = process.cwd() + '/' + subPath + '/' + fileStats.name
   const target = fs.createWriteStream(targetPath)
 
   const original = fs.createReadStream(way).pipe(target)
@@ -55,19 +55,23 @@ walker.on('file', (root, fileStats, next) => {
 })
 
 walker.on('end', () => {
-  const spinner = ora('Installing missing packages via npm'.green)
+  const spinner = ora(chalk.green('Installing missing packages via npm'))
 
   spinner.color = 'green'
   spinner.start()
 
-  exec('npm install', function (err, stdout, stderr) {
-    if (err) throw err
+  exec('npm install', (err, stdout, stderr) => {
+    if (err) {
+      throw err
+    }
 
     if (stdout && stdout.indexOf('example@1.0.0') > -1) {
       spinner.stop()
       done()
     }
 
-    if (stderr) console.error(stderr)
+    if (stderr) {
+      console.error(stderr)
+    }
   })
 })

@@ -2,25 +2,28 @@
 
 // Packages
 import fs from 'fs-extra'
-import colors from 'colors'
+import chalk from 'chalk'
 
 // Ours
-import { exists, isSite } from '../lib/etc'
+import {exists, isSite} from '../lib/etc'
 import config from '../lib/config'
 
 if (!isSite()) {
-  console.error('No site in here!'.red)
+  console.error(chalk.red('No site in here!'))
   process.exit(1)
 }
 
 if (!exists(config.outputDir)) {
   console.error('There\'s a site in here, but it hasn\'t been built yet.')
-  console.error('Run ' + 'cory build'.gray + ' to build it.')
+  console.error('Run ' + chalk.gray('cory build') + ' to build it.')
 
   process.exit(1)
 }
 
 fs.remove(config.outputDir, err => {
-  if (err) throw err
-  console.log('Everything cleaned up!'.green)
+  if (err) {
+    throw err
+  }
+
+  console.log(chalk.green('Everything cleaned up!'))
 })

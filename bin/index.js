@@ -7,7 +7,7 @@ import updateNotifier from 'update-notifier'
 // Ours
 import pkg from '../../package.json'
 
-updateNotifier({ pkg }).notify()
+updateNotifier({pkg}).notify()
 
 args
   .command('serve', 'Serve your site locally')

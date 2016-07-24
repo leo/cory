@@ -1,11 +1,11 @@
-// Packages
-import test from 'ava'
-
 // Native
 import path from 'path'
 
+// Packages
+import test from 'ava'
+
 // Ours
-import { isSite } from '../dist/lib/etc'
+import {isSite} from '../dist/lib/etc'
 
 test('is site', t => {
   const template = path.resolve('../template')
