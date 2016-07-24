@@ -10,7 +10,7 @@
     "start": "gulp",
     "prepublish": "gulp transpile",
     "pretest": "gulp transpile",
-    "test": "ava && eslint bin/** lib/**"
+    "test": "xo && ava"
   },
   "author": "leo",
   "ava": {
@@ -32,8 +32,10 @@
     "content",
     "website"
   ],
-  "eslintConfig": {
-    "extends": "default"
+  "xo": {
+    "esnext": true,
+    "space": true,
+    "semicolon": false
   },
   "license": "MIT",
   "preferGlobal": true,
@@ -71,11 +73,10 @@
     "ava": "^0.15.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-register": "^6.9.0",
-    "eslint": "^3.0.1",
-    "eslint-config-default": "^0.2.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-cached": "^1.1.0",
-    "gulp-ext": "^1.0.0"
+    "gulp-ext": "^1.0.0",
+    "xo": "^0.16.0"
   }
 }
