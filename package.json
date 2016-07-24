@@ -35,7 +35,10 @@
   "xo": {
     "esnext": true,
     "space": true,
-    "semicolon": false
+    "semicolon": false,
+    "rules": {
+      "ava/no-ignored-test-files": 0
+    }
   },
   "license": "MIT",
   "preferGlobal": true,

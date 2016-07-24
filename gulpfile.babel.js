@@ -1,7 +1,7 @@
 import gulp from 'gulp'
 import babel from 'gulp-babel'
 import cache from 'gulp-cached'
-import { crop as cropExt } from 'gulp-ext'
+import {crop as cropExt} from 'gulp-ext'
 
 const paths = {
   bin: 'bin/*',

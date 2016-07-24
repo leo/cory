@@ -1,7 +1,7 @@
 const mergeTrees = require('broccoli-merge-trees')
 const compileSass = require('broccoli-sass')
 const esTranspiler = require('broccoli-babel-transpiler')
-const funnel = require('broccoli-funnel')
+const Funnel = require('broccoli-funnel')
 
 const dirs = {
   scss: 'assets/scss',
@@ -17,7 +17,7 @@ const scripts = esTranspiler(dirs.js, {
   compact: true
 })
 
-const images = new funnel(dirs.images, {
+const images = new Funnel(dirs.images, {
   destDir: 'images'
 })
 
