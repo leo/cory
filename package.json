@@ -15,8 +15,8 @@
   "author": "leo",
   "repository": "leo/cory",
   "babel": {
-    "presets": [
-      "es2015"
+    "plugins": [
+      "transform-es2015-modules-commonjs"
     ]
   },
   "keywords": [
@@ -69,8 +69,7 @@
   },
   "devDependencies": {
     "ava": "^0.15.0",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-register": "^6.9.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-cached": "^1.1.0",
