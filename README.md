@@ -11,7 +11,7 @@ Cory combines clean, logic-less [handlebars](http://handlebarsjs.com) templates 
 
 ## Usage
 
-Install it
+Install it (you'll need at least node v6)
 
 ```bash
 $ npm install -g cory
