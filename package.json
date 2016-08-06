@@ -68,7 +68,7 @@
     "walk": "^2.3.9"
   },
   "devDependencies": {
-    "ava": "^0.15.0",
+    "ava": "^0.16.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
