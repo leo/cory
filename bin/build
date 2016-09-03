@@ -10,18 +10,31 @@ import chokidar from 'chokidar'
 import walk from 'walk'
 import ncp from 'ncp'
 import broccoli from 'broccoli'
+import fs from 'fs-extra'
 
 // Ours
 import config from '../lib/config'
-import {isSite as exists} from '../lib/etc'
+import {isSite, exists} from '../lib/etc'
 import {compile} from '../lib/compiler'
 
 args.option('watch', 'Rebuild site if files change')
 const options = args.parse(process.argv)
 
-if (!exists()) {
+if (!isSite()) {
   console.error(chalk.red('No site in here!'))
   process.exit(1)
+}
+
+const tmpDir = path.join(process.cwd(), 'tmp')
+
+// Make sure that the temporary directory is clean
+if (exists(tmpDir)) {
+  fs.removeSync(tmpDir)
+}
+
+// Delete output directory before rebuilding
+if (exists(config.outputDir)) {
+  fs.removeSync(config.outputDir)
 }
 
 const timerStart = new Date().getTime()
