@@ -1,7 +1,6 @@
 import gulp from 'gulp'
 import babel from 'gulp-babel'
 import cache from 'gulp-cached'
-import {crop as cropExt} from 'gulp-ext'
 
 const paths = {
   bin: 'bin/*',
@@ -18,7 +17,6 @@ gulp.task('bin', () =>
   gulp.src(paths.bin)
   .pipe(cache('bin'))
   .pipe(babel())
-  .pipe(cropExt())
   .pipe(gulp.dest('dist/bin')))
 
 gulp.task('watch', () => {

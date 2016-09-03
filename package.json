@@ -38,7 +38,7 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "cory": "dist/bin/index",
+    "cory": "dist/bin/main",
     "cory-serve": "dist/bin/serve",
     "cory-build": "dist/bin/build",
     "cory-init": "dist/bin/init",
@@ -73,7 +73,6 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-cached": "^1.1.0",
-    "gulp-ext": "^1.0.0",
     "xo": "^0.16.0"
   }
 }
