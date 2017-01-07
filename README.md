@@ -9,13 +9,13 @@ Cory combines clean, logic-less [handlebars](http://handlebarsjs.com) templates 
 
 ## Usage
 
-Install it (you'll need at least node v6)
+Install it (you'll need at least v6 of Node):
 
 ```bash
 npm install -g cory
 ```
 
-Run it
+Run it:
 
 ```bash
 cory [options] [command]
@@ -25,7 +25,7 @@ Theres a list of all options and commands [below](#cli). For a step-by-step guid
 
 ## Contribute
 
-Uninstall cory if it's already installed
+Uninstall the package if it's already installed:
 
 ```bash
 npm uninstall -g cory
@@ -46,24 +46,13 @@ npm link
 
 Yeeha! :horse: Now you can use the `gulp` command within the repository to transpile the its sourcefiles and watch for changes. While the command is running, you're able to use the `cory` command everywhere!
 
-## CLI
+## Commands & Options
 
-| Name                | Description |
-| ------------------- | ----------- |
-| serve               | If the current directory contains a site, it will serve it on the specified in `port`. See [config](#configuration) for default value. |
-| build               | Builds your site in the `outputDir` directory. |
-| init                | Creates a new site and places it in the current folder. The app won't allow you to use this command within the `template` directory of this project, since it would overwrite all files. |
-| clean               | Remove the generated output and all temporary files completely. |
-| help                | Output usage information. |
+Run the following command to get a list of all available options and commands:
 
-## CLI options
-
-| Usage                     | Description |
-| ------------------------- | ----------- |
-| -h, --help                | Output all commands and options. |
-| -v, --version             | Output the version of the cory instance on your device. |
-| -p, --port &#60;port&#62; | The port on which your site will be available. |
-| -w, --watch               | Rebuild site if files change (can be used with `build` or `serve`) |
+```bash
+cory help
+```
 
 ## Config
 
