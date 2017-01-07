@@ -12,13 +12,13 @@ Cory combines clean, logic-less [handlebars](http://handlebarsjs.com) templates 
 Install it (you'll need at least node v6)
 
 ```bash
-$ npm install -g cory
+npm install -g cory
 ```
 
 Run it
 
 ```bash
-$ cory [options] [command]
+cory [options] [command]
 ```
 
 Theres a list of all options and commands [below](#cli). For a step-by-step guide, check [this](https://github.com/leo/cory/wiki) out.
@@ -28,20 +28,20 @@ Theres a list of all options and commands [below](#cli). For a step-by-step guid
 Uninstall cory if it's already installed
 
 ```bash
-$ npm uninstall -g cory
+npm uninstall -g cory
 ```
 
-Clone this repository
+Clone this repository:
 
 ```bash
-$ git clone https://github.com/leo/cory.git
-$ cd cory
+git clone https://github.com/leo/cory.git
+cd cory
 ```
 
-Link it app to the global module directory
+Link it app to the global module directory:
 
 ```bash
-$ npm link
+npm link
 ```
 
 Yeeha! :horse: Now you can use the `gulp` command within the repository to transpile the its sourcefiles and watch for changes. While the command is running, you're able to use the `cory` command everywhere!
