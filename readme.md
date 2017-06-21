@@ -3,6 +3,12 @@
 [![Build Status](https://travis-ci.org/leo/cory.svg?branch=master)](https://travis-ci.org/leo/cory)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
+---
+
+**IMPORTANT:** This project is deprecated. Please go with [next.js](https://github.com/zeit/next.js)!
+
+---
+
 Ever wanted to create a static site while taking advantage of all the amazing things that are available within the JavaScript universe? Then you're at the right place!
 
 Cory combines clean, logic-less [handlebars](http://handlebarsjs.com) templates and [markdown](https://daringfireball.net/projects/markdown/) files with a straightforward development workflow and allows you to set up a new site in a few seconds.
